@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.bg-pattern-subtle {
+  background-image: radial-gradient(#d3e4fe 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.bg-grid-glow {
+  background-image: 
+    linear-gradient(to right, rgba(70, 72, 212, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(70, 72, 212, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.card-hover {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+}

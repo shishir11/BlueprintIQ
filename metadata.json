@@ -1,0 +1,7 @@
+{
+  "name": "BlueprintIQ",
+  "description": "Enterprise AI operations and scalable software architecture platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
