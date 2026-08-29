@@ -20,11 +20,11 @@ export const PricingScreen: React.FC<PricingScreenProps> = ({
       annualPrice: 39,
       description: 'Ideal for small engineering pods adopting automated decision records and AI workflows.',
       features: [
-        'Up to 15 team members',
-        'Built-in ADR templates & history',
-        'Standard Git & Slack integrations',
-        'Community & standard email support',
-        '10GB vector search index storage'
+        'Target Customer  - SMEs and early AI adopters',
+        'Applications Included - Up to 2',
+        'AI Strategy Assessments - Limited annual assessments',
+        'Business Objective, Use Case Analysis, BRD and PRD Analysis  - Included',
+        'Technical Feasibility Assessment - Included'
       ],
       cta: 'Start Free Trial',
       popular: false,

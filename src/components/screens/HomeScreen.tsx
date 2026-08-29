@@ -101,10 +101,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0b1c30] tracking-tight mb-3">
-            Powerful features for modern teams
+            The mission control for your organization's AI journey.
           </h2>
           <p className="text-sm sm:text-base text-[#45464d] max-w-xl mx-auto">
-            Everything you need to streamline operations and focus on what truly matters.
+               From strategy to impact see your AI transformation in real time.
           </p>
         </div>
 
@@ -123,7 +123,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 Advanced Analytics
               </h3>
               <p className="text-sm text-[#45464d] leading-relaxed">
-                Gain actionable insights with real-time data visualization. Track performance metrics and make informed decisions faster than ever.
+                  Multi-agent intelligence, one unified transformation blueprint.
               </p>
             </div>
           </div>
@@ -141,7 +141,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 AI Strategy
               </h3>
               <p className="text-sm text-[#45464d] leading-relaxed">
-                Connect your distributed teams seamlessly. Share assets, coordinate tasks, and communicate effortlessly across time zones.
+                The AI Transformation Blueprint will be the company’s principal product. It will provide a comprehensive organisation-level strategy covering current-state assessment, target architecture, model options, data requirements, MLOps, deployment, investment, build-versus-buy decisions, and resourcing.
               </p>
             </div>
           </div>
@@ -203,8 +203,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   Operational Excellence
                 </h4>
                 <p className="text-xs sm:text-sm text-[#45464d] mt-0.5 leading-relaxed">
-                  Automate complex workflows and reduce manual overhead by up to 40%.
-                </p>
+                Achieve operational resilience and regulatory alignment: Our review evaluates AI architectures against compliance frameworks to convert regulatory requirements into structured technical controls and delivery plans.
+                 </p>
               </div>
             </div>
 
@@ -218,8 +218,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   Data-Driven Strategy
                 </h4>
                 <p className="text-xs sm:text-sm text-[#45464d] mt-0.5 leading-relaxed">
-                  Turn raw data into actionable foresight with predictive modeling.
-                </p>
+                Faster and more repeatable than a fully manual assessment, more implementation-oriented than an architecture repository, and more evidence-controlled than a general-purpose AI report.
+                 </p>
               </div>
             </div>
 
@@ -233,7 +233,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   Scalable Innovation
                 </h4>
                 <p className="text-xs sm:text-sm text-[#45464d] mt-0.5 leading-relaxed">
-                  Deploy agentic AI that grows alongside your business requirements.
+                Converts customer business and technical artifacts into an evidence-linked, confidence-scored AI Strategy Plan with optional ADRs, customised patterns and expert collaboration
                 </p>
               </div>
             </div>
