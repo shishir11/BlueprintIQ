@@ -36,7 +36,7 @@ export const CareersModal: React.FC<CareersModalProps> = ({ isOpen, onClose }) =
             </div>
             <div>
               <h3 className="text-lg font-bold text-[#0b1c30]">Careers at BlueprintIQ</h3>
-              <p className="text-xs text-[#76777d]">Shape the future of enterprise AI operations</p>
+              <p className="text-xs text-[#76777d]">Pre-incorporation · UK and EU</p>
             </div>
           </div>
           <button
@@ -122,6 +122,17 @@ export const CareersModal: React.FC<CareersModalProps> = ({ isOpen, onClose }) =
                   </button>
                 </form>
               )}
+            </div>
+          ) : JOB_OPENINGS.length === 0 ? (
+            <div className="text-center py-10 px-4 space-y-3">
+              <div className="w-12 h-12 rounded-full bg-[#eff4ff] text-[#4648d4] flex items-center justify-center mx-auto">
+                <Briefcase className="w-6 h-6" />
+              </div>
+              <h4 className="text-base font-bold text-[#0b1c30]">No open roles yet</h4>
+              <p className="text-sm text-[#45464d] max-w-md mx-auto leading-relaxed">
+                We are pre-incorporation with a two-person founding team. There are no vacancies to advertise honestly right now. If you would like to be considered when that changes, email{' '}
+                <a href="mailto:hello@blueprint-iq.uk" className="text-[#4648d4] font-semibold hover:underline">hello@blueprint-iq.uk</a>.
+              </p>
             </div>
           ) : (
             <div className="space-y-3">

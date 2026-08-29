@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TabType, TeamMember } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -85,9 +85,10 @@ export default function App() {
         )}
       </main>
 
-      {/* Screen Switcher Floating Bar */}
-      <aside 
-        aria-label="Screen Quick Switcher" 
+      {/* Screen Switcher Floating Bar — development only, excluded from production builds */}
+      {import.meta.env.DEV && (
+      <aside
+        aria-label="Screen Quick Switcher"
         className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-[#0f172a]/95 text-white backdrop-blur-md px-3 py-2 rounded-full shadow-2xl border border-[#334155] flex items-center space-x-1.5 text-xs font-medium"
       >
         <span className="text-[#94a3b8] px-2 hidden sm:inline flex items-center">
@@ -144,6 +145,7 @@ export default function App() {
           Contact
         </button>
       </aside>
+      )}
 
       {/* Global Footer */}
       <Footer

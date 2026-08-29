@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Check, Sparkles, ArrowRight, ShieldCheck, Zap, Building } from 'lucide-react';
+import React from 'react';
+import { Check, ArrowRight } from 'lucide-react';
 
 interface PricingScreenProps {
   onOpenGetStarted: () => void;
@@ -10,58 +10,47 @@ export const PricingScreen: React.FC<PricingScreenProps> = ({
   onOpenGetStarted,
   onOpenContact
 }) => {
-  const [annualBilling, setAnnualBilling] = useState(true);
-
-  const plans = [
+  const engagements = [
     {
-      name: 'Starter',
-      badge: 'Pilot Ready',
-      monthlyPrice: 49,
-      annualPrice: 39,
-      description: 'Ideal for small engineering pods adopting automated decision records and AI workflows.',
-      features: [
-        'Target Customer  - SMEs and early AI adopters',
-        'Applications Included - Up to 2',
-        'AI Strategy Assessments - Limited annual assessments',
-        'Business Objective, Use Case Analysis, BRD and PRD Analysis  - Included',
-        'Technical Feasibility Assessment - Included'
+      name: 'Feasibility question',
+      badge: 'Hours, not weeks',
+      description: 'A single, well-defined question — should we build this, and will it beat what we already do — answered against the material you send.',
+      includes: [
+        'One business objective and use case',
+        'A read of your policy or requirements document',
+        'A go / do-not-build recommendation with its confidence band',
+        'The evidence trail behind the answer'
       ],
-      cta: 'Start Free Trial',
+      cta: 'Book a scoping call',
       popular: false,
       onCta: onOpenGetStarted
     },
     {
-      name: 'Professional',
-      badge: 'Most Popular',
-      monthlyPrice: 199,
-      annualPrice: 159,
-      description: 'Comprehensive AI operations for high-growth engineering organizations and distributed teams.',
-      features: [
-        'Unlimited team members',
-        'Custom fine-tuned AI Agents',
-        'Automated CI/CD compliance gatekeeper',
-        'Multi-region high availability',
-        'SOC2 Type II compliance reports',
-        'Dedicated Solutions Architect (24/7 SLA)'
+      name: 'Full blueprint',
+      badge: 'Most common',
+      description: 'The implementation-grade plan: decision map, opportunity assessment, target architecture, decision records, regulatory control map and gap register.',
+      includes: [
+        'Everything in a feasibility question',
+        'Target architecture traced to your material',
+        'Regulatory control map for your specific case',
+        'Confidence appendix and gap register',
+        'Joint review with a named architect who signs the version'
       ],
-      cta: 'Get Started Now',
+      cta: 'Book a scoping call',
       popular: true,
       onCta: onOpenGetStarted
     },
     {
-      name: 'Enterprise',
-      badge: 'Custom Deployment',
-      monthlyPrice: 'Custom',
-      annualPrice: 'Custom',
-      description: 'For regulated enterprises requiring on-premise air-gapped deployments and custom SLAs.',
-      features: [
-        'Dedicated VPC & On-Premises deployment',
-        'Custom LLM fine-tuning & BYOK encryption',
-        'Custom connector development',
-        'Custom enterprise licensing & audit logging',
-        '99.999% uptime guarantee SLA'
+      name: 'Design partner',
+      badge: 'Selecting now',
+      description: 'For a small number of UK and EU financial services organisations willing to work through the first engagements with us while we are pre-incorporation.',
+      includes: [
+        'Direct access to both founders',
+        'Scope shaped around your first real decision',
+        'Deployment inside your tenant where the case needs it',
+        'Terms agreed per engagement, in writing'
       ],
-      cta: 'Contact Sales',
+      cta: 'Talk to us',
       popular: false,
       onCta: onOpenContact
     }
@@ -72,47 +61,23 @@ export const PricingScreen: React.FC<PricingScreenProps> = ({
       {/* Header */}
       <section className="text-center pt-12 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#dce9ff] text-[#2f2ebe] tracking-wider uppercase inline-block mb-3">
-          Transparent Pricing
+          How engagements work
         </span>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0b1c30] mb-4 tracking-tight">
-          Scale effortlessly as your enterprise grows
+          Priced per engagement, not per seat
         </h1>
-        <p className="text-base sm:text-lg text-[#45464d] max-w-2xl mx-auto mb-8">
-          Predictable flat-rate pricing with zero hidden egress charges. Start with a 14-day risk-free trial.
+        <p className="text-base sm:text-lg text-[#45464d] max-w-2xl mx-auto mb-4">
+          BlueprintIQ is an expert-reviewed assessment, not self-serve software. The scope depends on the decision you are trying to make, so every engagement is quoted after a scoping call. We are pre-incorporation and do not publish a rate card we could not stand behind.
         </p>
-
-        {/* Toggle */}
-        <div className="inline-flex items-center bg-[#eff4ff] p-1.5 rounded-xl border border-[#d3e4fe]">
-          <button
-            onClick={() => setAnnualBilling(false)}
-            className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${
-              !annualBilling
-                ? 'bg-white text-[#0b1c30] shadow-sm'
-                : 'text-[#45464d] hover:text-[#0b1c30]'
-            }`}
-          >
-            Monthly Billing
-          </button>
-          <button
-            onClick={() => setAnnualBilling(true)}
-            className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all flex items-center space-x-1.5 ${
-              annualBilling
-                ? 'bg-[#4648d4] text-white shadow-sm'
-                : 'text-[#45464d] hover:text-[#0b1c30]'
-            }`}
-          >
-            <span>Annual Billing</span>
-            <span className="bg-[#dcfce7] text-[#15803d] text-[10px] font-bold px-1.5 py-0.5 rounded">
-              Save 20%
-            </span>
-          </button>
-        </div>
+        <p className="text-sm text-[#76777d] max-w-2xl mx-auto">
+          Simple questions come back in hours. The hardest case we scope — several departments, several regulations, interacting systems — is seven days.
+        </p>
       </section>
 
       {/* Cards Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {plans.map((plan) => (
+          {engagements.map((plan) => (
             <div
               key={plan.name}
               className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 ${
@@ -137,36 +102,25 @@ export const PricingScreen: React.FC<PricingScreenProps> = ({
                   )}
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#45464d] mb-6 min-h-[38px]">
+                <p className="text-xs sm:text-sm text-[#45464d] mb-6 min-h-[38px] leading-relaxed">
                   {plan.description}
                 </p>
 
                 <div className="mb-6 pb-6 border-b border-[#f1f5f9]">
-                  {typeof plan.annualPrice === 'number' ? (
-                    <div className="flex items-baseline">
-                      <span className="text-4xl font-extrabold text-[#0b1c30]">
-                        ${annualBilling ? plan.annualPrice : plan.monthlyPrice}
-                      </span>
-                      <span className="text-xs text-[#76777d] ml-2">
-                        / user / month
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="text-3xl font-extrabold text-[#0b1c30]">
-                      Custom
-                    </div>
-                  )}
+                  <div className="text-2xl font-extrabold text-[#0b1c30]">
+                    Quoted after scoping
+                  </div>
                   <p className="text-xs text-[#76777d] mt-1">
-                    {annualBilling ? 'Billed annually' : 'Billed monthly, cancel anytime'}
+                    No obligation to proceed
                   </p>
                 </div>
 
-                {/* Features List */}
+                {/* Includes List */}
                 <div className="space-y-3 mb-8">
                   <p className="text-xs font-bold uppercase tracking-wider text-[#0b1c30]">
-                    Included Features:
+                    What it includes:
                   </p>
-                  {plan.features.map((feature, i) => (
+                  {plan.includes.map((feature, i) => (
                     <div key={i} className="flex items-start text-xs sm:text-sm text-[#45464d] space-x-2.5">
                       <Check className="w-4 h-4 text-[#4648d4] shrink-0 mt-0.5" />
                       <span>{feature}</span>

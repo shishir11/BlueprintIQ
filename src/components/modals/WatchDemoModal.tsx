@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Play, CheckCircle2, Bot, GitFork, ShieldCheck, Sparkles, RefreshCw } from 'lucide-react';
+import { X, Play, Sparkles, RefreshCw } from 'lucide-react';
 
 interface WatchDemoModalProps {
   isOpen: boolean;
@@ -18,22 +18,22 @@ export const WatchDemoModal: React.FC<WatchDemoModalProps> = ({
 
   const demoSteps = [
     {
-      title: '1. Automated ADR Extraction',
-      description: 'AI agents monitor pull requests and automatically draft Architecture Decision Records from technical discussions and diffs.',
-      tag: 'Workflow Automation',
-      highlight: '94% reduction in manual architecture documentation debt.'
+      title: '1. Intake and inventory',
+      description: 'You state the business objective, the use case and who owns the decision, and send what you already have. You see what we found in your own documents — what is current, what is stale, what contradicts something else.',
+      tag: 'Days 1–2',
+      highlight: 'Usually visible within hours of receiving your material.'
     },
     {
-      title: '2. Real-Time Distributed Synchronization',
-      description: 'CRDT-backed state synchronization ensures zero conflict resolution delays across multi-region development teams.',
-      tag: 'Core Engine',
-      highlight: '< 15ms latency across global clusters.'
+      title: '2. Analysis, traced to source',
+      description: 'Each recommendation is drafted against your material and cites the document and section it came from. Where the input is insufficient to reach a conclusion, that gap is recorded rather than papered over.',
+      tag: 'Days 2–4',
+      highlight: 'A claim we cannot trace goes into a gap register, not onto the page.'
     },
     {
-      title: '3. SOC2 Compliance Guardrails',
-      description: 'Continuous static and runtime verification checks code changes against enterprise security and data sovereignty policies.',
-      tag: 'Enterprise Security',
-      highlight: 'Zero manual audit preparation required.'
+      title: '3. Joint review and sign-off',
+      description: 'Your architects and risk representatives go through the draft with our expert. Every recommendation is accepted, edited or rejected on the record, and a named architect signs the version that ships.',
+      tag: 'Day 5',
+      highlight: 'Delivered with the evidence trail, confidence assessment and gap register.'
     }
   ];
 
@@ -50,8 +50,8 @@ export const WatchDemoModal: React.FC<WatchDemoModalProps> = ({
               <Play className="w-4 h-4 fill-white" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-[#0b1c30]">BlueprintIQ Interactive Tour</h3>
-              <p className="text-xs text-[#76777d]">Explore the core platform workflow</p>
+              <h3 className="text-base font-bold text-[#0b1c30]">How an engagement runs</h3>
+              <p className="text-xs text-[#76777d]">Five days, from a defined starting point</p>
             </div>
           </div>
           <button
@@ -103,7 +103,7 @@ export const WatchDemoModal: React.FC<WatchDemoModalProps> = ({
         {/* Footer Actions */}
         <div className="p-4 sm:p-5 bg-white border-t border-[#f1f5f9] flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-xs text-[#76777d]">
-            Ready to test on your own architecture?
+            Want to put your own case through this?
           </div>
           <div className="flex space-x-3 w-full sm:w-auto">
             <button
@@ -111,7 +111,7 @@ export const WatchDemoModal: React.FC<WatchDemoModalProps> = ({
               className="px-4 py-2 rounded-lg border border-[#c6c6cd] text-xs font-semibold text-[#0b1c30] hover:bg-[#f8f9ff] flex items-center justify-center space-x-1.5 flex-1 sm:flex-initial"
             >
               <RefreshCw className="w-3.5 h-3.5" />
-              <span>Next Feature</span>
+              <span>Next step</span>
             </button>
             <button
               onClick={() => {
@@ -120,7 +120,7 @@ export const WatchDemoModal: React.FC<WatchDemoModalProps> = ({
               }}
               className="px-5 py-2 rounded-lg bg-[#4648d4] hover:bg-[#3738b5] text-white text-xs font-semibold shadow flex items-center justify-center space-x-1.5 flex-1 sm:flex-initial"
             >
-              <span>Start Free Trial</span>
+              <span>Book a scoping call</span>
             </button>
           </div>
         </div>

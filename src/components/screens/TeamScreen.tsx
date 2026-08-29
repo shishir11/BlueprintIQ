@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { EXECUTIVE_LEADERSHIP, CORE_DEPARTMENTS, CORE_VALUES } from '../../data/appData';
+import React from 'react';
+import { EXECUTIVE_LEADERSHIP, CORE_VALUES, CORE_DEPARTMENTS } from '../../data/appData';
 import { TeamMember } from '../../types';
-import { 
-  Mail, 
-  Briefcase, 
-  Code, 
-  Palette, 
-  TrendingUp, 
-  Terminal, 
-  Lightbulb, 
-  Eye, 
-  Zap, 
+import {
+  Mail,
+  Briefcase,
+  Code,
+  Lightbulb,
+  Eye,
+  Zap,
   ArrowRight,
-  Sparkles,
-  Layers
+  Ruler,
+  FileText,
+  ShieldCheck
 } from 'lucide-react';
 
 interface TeamScreenProps {
@@ -33,10 +31,10 @@ export const TeamScreen: React.FC<TeamScreenProps> = ({
       <section className="text-center py-12 md:py-16 bg-pattern-subtle rounded-xl mb-12 relative overflow-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0b1c30] mb-4 tracking-tight">
-            The Minds Behind the Blueprint
+            The people who sign the blueprint
           </h1>
           <p className="text-base sm:text-lg text-[#45464d] max-w-2xl mx-auto leading-relaxed">
-            We are a collective of engineers, designers, and strategists united by a singular mission: to revolutionize AI operations and build resilient, scalable systems for the modern enterprise.
+            No blueprint leaves without a named architect reviewing it and putting their name to a specific version. Today that is the two founders. We do not pad this page with people who do not exist.
           </p>
         </div>
         {/* Decorative blur element */}
@@ -44,28 +42,23 @@ export const TeamScreen: React.FC<TeamScreenProps> = ({
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 space-y-16">
-        {/* Executive Leadership Section */}
+        {/* Founders Section */}
         <section>
           <div className="border-b border-[#d3e4fe] pb-3 mb-8">
             <h2 className="text-xl sm:text-2xl font-bold text-[#0b1c30]">
-              Executive Leadership
+              Founders
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
             {EXECUTIVE_LEADERSHIP.map((exec) => (
               <div
                 key={exec.id}
                 onClick={() => onSelectMember(exec)}
                 className="bg-white border border-[#c6c6cd]/40 rounded-xl p-6 card-hover flex flex-col items-center text-center shadow-[0_4px_12px_rgba(15,23,42,0.04)] cursor-pointer group"
               >
-                <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-4 ring-[#dce9ff] group-hover:ring-[#4648d4]/40 transition-all">
-                  <img
-                    src={exec.image}
-                    alt={`Photo of ${exec.name}`}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                <div className="w-24 h-24 rounded-full bg-[#dce9ff] text-[#2f2ebe] flex items-center justify-center font-bold text-2xl mb-4 ring-4 ring-[#eff4ff] group-hover:ring-[#4648d4]/40 transition-all">
+                  {exec.initials}
                 </div>
                 <h3 className="text-lg font-bold text-[#0b1c30] group-hover:text-[#4648d4] transition-colors">
                   {exec.name}
@@ -97,8 +90,6 @@ export const TeamScreen: React.FC<TeamScreenProps> = ({
                   >
                     {exec.socialRoleIcon === 'code' ? (
                       <Code className="w-5 h-5" />
-                    ) : exec.socialRoleIcon === 'design' ? (
-                      <Palette className="w-5 h-5" />
                     ) : (
                       <Briefcase className="w-5 h-5" />
                     )}
@@ -109,120 +100,63 @@ export const TeamScreen: React.FC<TeamScreenProps> = ({
           </div>
         </section>
 
-        {/* Departmental Grid (Asymmetric) */}
+        {/* Departments */}
         <section>
           <div className="border-b border-[#d3e4fe] pb-3 mb-8">
             <h2 className="text-xl sm:text-2xl font-bold text-[#0b1c30]">
-              Core Departments
+              How the work is organised
             </h2>
+            <p className="text-sm text-[#45464d] mt-1">
+              The functions behind each blueprint. We are pre-incorporation, so these are the areas we build in, not staffed departments.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {/* Engineering Column (Spans 2) */}
-            <div className="md:col-span-2 bg-[#eff4ff]/60 rounded-xl p-6 border border-[#d3e4fe]/80 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center mb-2">
-                  <Terminal className="w-5 h-5 text-[#4648d4] mr-2" />
-                  <h3 className="text-base font-bold text-[#0b1c30]">Engineering</h3>
-                </div>
-                <p className="text-xs sm:text-sm text-[#45464d] mb-5">
-                  {CORE_DEPARTMENTS.engineering.description}
-                </p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {CORE_DEPARTMENTS.map((dept) => {
+              const renderDeptIcon = () => {
+                if (dept.icon === 'Ruler') return <Ruler className="w-6 h-6 text-[#4648d4]" />;
+                if (dept.icon === 'FileText') return <FileText className="w-6 h-6 text-[#4648d4]" />;
+                return <ShieldCheck className="w-6 h-6 text-[#4648d4]" />;
+              };
 
-              <div className="space-y-3">
-                {CORE_DEPARTMENTS.engineering.members.map((member) => (
-                  <div
-                    key={member.id}
-                    onClick={() => onSelectMember(member as TeamMember)}
-                    className="flex items-center bg-white p-3 rounded-lg border border-[#c6c6cd]/30 hover:border-[#4648d4]/50 transition-all cursor-pointer shadow-sm group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-[#dce9ff] text-[#2f2ebe] flex items-center justify-center font-bold text-xs mr-3 shrink-0">
-                      {member.initials}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[#0b1c30] group-hover:text-[#4648d4] transition-colors">
-                        {member.name}
-                      </p>
-                      <p className="text-xs text-[#76777d]">{member.role}</p>
-                    </div>
+              return (
+                <div
+                  key={dept.id}
+                  className="bg-white border border-[#c6c6cd]/40 rounded-xl p-6 sm:p-7 shadow-[0_2px_8px_rgba(15,23,42,0.04)] card-hover flex flex-col"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-[#eff4ff] flex items-center justify-center mb-5 ring-1 ring-[#d3e4fe]/70">
+                    {renderDeptIcon()}
                   </div>
-                ))}
-              </div>
-            </div>
+                  <h3 className="text-lg font-bold text-[#0b1c30] mb-2">{dept.name}</h3>
+                  <p className="text-sm text-[#45464d] leading-relaxed flex-grow">{dept.description}</p>
 
-            {/* Design Column */}
-            <div className="bg-[#eff4ff]/60 rounded-xl p-6 border border-[#d3e4fe]/80 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center mb-2">
-                  <Palette className="w-5 h-5 text-[#4648d4] mr-2" />
-                  <h3 className="text-base font-bold text-[#0b1c30]">Design</h3>
+                  {dept.members.length > 0 ? (
+                    <div className="mt-5 flex -space-x-1.5">
+                      {dept.members.map((member) => (
+                        <div
+                          key={member.id}
+                          title={member.name}
+                          className="w-8 h-8 rounded-full bg-[#dce9ff] text-[#2f2ebe] border-2 border-white flex items-center justify-center text-[11px] font-bold"
+                        >
+                          {member.initials}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="mt-5 pt-4 border-t border-[#f1f5f9] text-xs font-semibold text-[#76777d]">
+                      Roles to be announced
+                    </p>
+                  )}
                 </div>
-                <p className="text-xs sm:text-sm text-[#45464d] mb-5">
-                  {CORE_DEPARTMENTS.design.description}
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                {CORE_DEPARTMENTS.design.members.map((member) => (
-                  <div
-                    key={member.id}
-                    onClick={() => onSelectMember(member as TeamMember)}
-                    className="flex items-center bg-white p-3 rounded-lg border border-[#c6c6cd]/30 hover:border-[#4648d4]/50 transition-all cursor-pointer shadow-sm group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-[#dce9ff] text-[#2f2ebe] flex items-center justify-center font-bold text-xs mr-3 shrink-0">
-                      {member.initials}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[#0b1c30] group-hover:text-[#4648d4] transition-colors">
-                        {member.name}
-                      </p>
-                      <p className="text-xs text-[#76777d]">{member.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Strategy Column */}
-            <div className="bg-[#eff4ff]/60 rounded-xl p-6 border border-[#d3e4fe]/80 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center mb-2">
-                  <TrendingUp className="w-5 h-5 text-[#4648d4] mr-2" />
-                  <h3 className="text-base font-bold text-[#0b1c30]">Strategy</h3>
-                </div>
-                <p className="text-xs sm:text-sm text-[#45464d] mb-5">
-                  {CORE_DEPARTMENTS.strategy.description}
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                {CORE_DEPARTMENTS.strategy.members.map((member) => (
-                  <div
-                    key={member.id}
-                    onClick={() => onSelectMember(member as TeamMember)}
-                    className="flex items-center bg-white p-3 rounded-lg border border-[#c6c6cd]/30 hover:border-[#4648d4]/50 transition-all cursor-pointer shadow-sm group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-[#dce9ff] text-[#2f2ebe] flex items-center justify-center font-bold text-xs mr-3 shrink-0">
-                      {member.initials}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[#0b1c30] group-hover:text-[#4648d4] transition-colors">
-                        {member.name}
-                      </p>
-                      <p className="text-xs text-[#76777d]">{member.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+              );
+            })}
           </div>
         </section>
 
-        {/* Our Core Values */}
+        {/* How we work */}
         <section>
           <h2 className="text-xl sm:text-2xl font-bold text-[#0b1c30] mb-8 text-center">
-            Our Core Values
+            How we work
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -260,19 +194,27 @@ export const TeamScreen: React.FC<TeamScreenProps> = ({
           />
           <div className="relative z-10 max-w-2xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">
-              Build the Future with Us
+              Working with us
             </h2>
             <p className="text-sm sm:text-base text-[#7c839b] mb-8 max-w-xl mx-auto leading-relaxed">
-              We are always looking for passionate individuals to join our growing team. Explore our open roles and help us shape the next generation of AI tooling.
+              We are pre-incorporation and selecting design partners in UK and EU financial services. If you want to put a specific decision in front of a named architect, start with a scoping call.
             </p>
-            <button
-              onClick={onOpenCareers}
-              id="team-view-open-positions-btn"
-              className="bg-[#4648d4] hover:bg-[#3738b5] text-white px-7 py-3 rounded-lg text-sm sm:text-base font-semibold inline-flex items-center shadow-md transition-all active:scale-98 cursor-pointer"
-            >
-              <span>View Open Positions</span>
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={onOpenContact}
+                className="bg-[#4648d4] hover:bg-[#3738b5] text-white px-7 py-3 rounded-lg text-sm sm:text-base font-semibold inline-flex items-center shadow-md transition-all active:scale-98 cursor-pointer"
+              >
+                <span>Book a scoping call</span>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </button>
+              <button
+                onClick={onOpenCareers}
+                id="team-view-open-positions-btn"
+                className="text-[#dce9ff] hover:text-white px-4 py-3 text-sm font-semibold transition-colors cursor-pointer"
+              >
+                Register interest in joining
+              </button>
+            </div>
           </div>
         </section>
       </div>

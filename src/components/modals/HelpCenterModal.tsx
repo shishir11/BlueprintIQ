@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FAQS } from '../../data/appData';
-import { X, Search, HelpCircle, ChevronDown, BookOpen, ShieldCheck, Terminal, CreditCard } from 'lucide-react';
+import { X, Search, HelpCircle, ChevronDown } from 'lucide-react';
 
 interface HelpCenterModalProps {
   isOpen: boolean;
@@ -14,7 +14,7 @@ export const HelpCenterModal: React.FC<HelpCenterModalProps> = ({ isOpen, onClos
 
   if (!isOpen) return null;
 
-  const categories = ['All', 'Platform', 'Security', 'Billing', 'API'];
+  const categories = ['All', 'Product', 'Engagement', 'Security', 'Evidence'];
 
   const filteredFaqs = FAQS.filter((faq) => {
     const matchesCategory = activeCategory === 'All' || faq.category === activeCategory;
@@ -38,8 +38,8 @@ export const HelpCenterModal: React.FC<HelpCenterModalProps> = ({ isOpen, onClos
                 <HelpCircle className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-[#0b1c30]">BlueprintIQ Help Center</h3>
-                <p className="text-xs text-[#76777d]">Documentation, FAQs, & integration guides</p>
+                <h3 className="text-lg font-bold text-[#0b1c30]">BlueprintIQ help centre</h3>
+                <p className="text-xs text-[#76777d]">What a blueprint contains and how an engagement works</p>
               </div>
             </div>
             <button
@@ -55,7 +55,7 @@ export const HelpCenterModal: React.FC<HelpCenterModalProps> = ({ isOpen, onClos
             <Search className="w-4 h-4 text-[#9ca3af] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search topics (e.g. SOC2, API, Git connectors)..."
+              placeholder="Search topics (e.g. confidence bands, regulation, gap register)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-[#c6c6cd] bg-white text-sm text-[#0b1c30] placeholder-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#4648d4]/40"
@@ -84,7 +84,7 @@ export const HelpCenterModal: React.FC<HelpCenterModalProps> = ({ isOpen, onClos
         <div className="p-6 overflow-y-auto space-y-3 flex-grow">
           {filteredFaqs.length === 0 ? (
             <div className="text-center py-10 text-sm text-[#76777d]">
-              No articles matching your search query. Try another term or contact support.
+              Nothing matches that search yet. Try another term or email us.
             </div>
           ) : (
             filteredFaqs.map((faq, index) => {
@@ -118,7 +118,7 @@ export const HelpCenterModal: React.FC<HelpCenterModalProps> = ({ isOpen, onClos
 
         {/* Footer */}
         <div className="p-4 bg-[#f8f9ff] border-t border-[#f1f5f9] text-center text-xs text-[#76777d]">
-          Still need assistance? Email us anytime at <a href="mailto:support@blueprintiq.com" className="text-[#4648d4] font-semibold hover:underline">support@blueprintiq.com</a>
+          Still need help? Email us at <a href="mailto:hello@blueprint-iq.uk" className="text-[#4648d4] font-semibold hover:underline">hello@blueprint-iq.uk</a>
         </div>
       </div>
     </div>
