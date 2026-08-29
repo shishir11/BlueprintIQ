@@ -58,7 +58,7 @@ export default function App() {
         {currentTab === 'team' && (
           <TeamScreen
             onOpenCareers={() => setCareersOpen(true)}
-            onSelectMember={(member) => setSelectedMember(member)}
+            onSelectMember={(member: any) => setSelectedMember(member)}
             onOpenContact={() => handleSelectTab('contact')}
           />
         )}
@@ -79,7 +79,7 @@ export default function App() {
         {currentTab === 'about' && (
           <TeamScreen
             onOpenCareers={() => setCareersOpen(true)}
-            onSelectMember={(member) => setSelectedMember(member)}
+            onSelectMember={(member: any) => setSelectedMember(member)}
             onOpenContact={() => handleSelectTab('contact')}
           />
         )}

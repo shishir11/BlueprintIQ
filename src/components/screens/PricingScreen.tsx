@@ -14,7 +14,7 @@ export const PricingScreen: React.FC<PricingScreenProps> = ({
 
   const plans = [
     {
-      name: 'Starter Pod',
+      name: 'Starter',
       badge: 'Pilot Ready',
       monthlyPrice: 49,
       annualPrice: 39,
@@ -31,7 +31,7 @@ export const PricingScreen: React.FC<PricingScreenProps> = ({
       onCta: onOpenGetStarted
     },
     {
-      name: 'Enterprise Scale',
+      name: 'Professional',
       badge: 'Most Popular',
       monthlyPrice: 199,
       annualPrice: 159,
@@ -49,8 +49,8 @@ export const PricingScreen: React.FC<PricingScreenProps> = ({
       onCta: onOpenGetStarted
     },
     {
-      name: 'Custom Sovereign',
-      badge: 'Dedicated VPC',
+      name: 'Enterprise',
+      badge: 'Custom Deployment',
       monthlyPrice: 'Custom',
       annualPrice: 'Custom',
       description: 'For regulated enterprises requiring on-premise air-gapped deployments and custom SLAs.',

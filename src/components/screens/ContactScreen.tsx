@@ -233,7 +233,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                 <Mail className="w-5 h-5" />
               </div>
               <div className="flex-grow">
-                <h3 className="text-base font-bold text-[#0b1c30]">Support</h3>
+                <h3 className="text-base font-bold text-[#0b1c30]">Sales and Support</h3>
                 <p className="text-xs sm:text-sm text-[#45464d] mb-2">
                   Our technical team is here to help.
                 </p>

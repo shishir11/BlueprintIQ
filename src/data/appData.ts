@@ -24,18 +24,6 @@ export const EXECUTIVE_LEADERSHIP: TeamMember[] = [
     socialRoleIcon: 'code',
     skills: ['Distributed Systems', 'MLOps', 'High-throughput APIs', 'Kubernetes'],
     location: 'San Francisco, CA'
-  },
-  {
-    id: 'alex-mercer',
-    name: 'Alex Mercer',
-    role: 'Head of Product',
-    department: 'Leadership',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCGR3K1iP7aJ8Fa590fO0lxsFKj33Le2EN-jwvgquSKFb0uw5Oun_WbDUFvIKogUMCpg5w8v_w4BMk096EQkTV_J8XFoIW9UlQ7dTc5IwOHPZiH1I-rdhSmvoJ4UXy9zAl4eiRgcL1P1JW6gSIfTtAQCmXPACEH4G2_irRbuz1-zCbM7bchv63aDVilnVMtrQUQ_v_yhMsJ0kbS73R8wDALjFVauo36R9j_ySAH-LCzI6TtuoOhlxJPhg',
-    bio: 'Bridging the gap between complex algorithms and intuitive user experiences. Champion for user-centric design principles.',
-    email: 'alex.mercer@blueprintiq.com',
-    socialRoleIcon: 'design',
-    skills: ['Product Discovery', 'Design Systems', 'AI Workflow UX', 'User Research'],
-    location: 'London, UK'
   }
 ];
 
@@ -54,8 +42,8 @@ export const CORE_DEPARTMENTS = {
         email: 'marcus.j@blueprintiq.com'
       },
       {
-        id: 'elena-rodriguez',
-        name: 'Elena Rodriguez',
+        id: 'abhishek-priyankar',
+        name: 'Abhishek Priyankar',
         role: 'Data Scientist',
         initials: 'EL',
         department: 'Engineering' as const,
