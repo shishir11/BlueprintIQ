@@ -31,7 +31,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,8 +60,8 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
       setCopiedEmail(true);
       setTimeout(() => setCopiedEmail(false), 2000);
     } else {
-      setCopiedPhone(true);
-      setTimeout(() => setCopiedPhone(false), 2000);
+      setCopiedPhone(text);
+      setTimeout(() => setCopiedPhone(null), 2000);
     }
   };
 
@@ -242,7 +242,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                     href="mailto:hello@blueprint-iq.uk"
                     className="text-sm font-semibold text-[#4648d4] hover:underline"
                   >
-                    hello@blueprint-iq.uk
+                   support@blueprint-iq.uk
                   </a>
                   <button
                     onClick={() => handleCopy('hello@blueprint-iq.uk', 'email')}
@@ -265,20 +265,28 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                 <p className="text-xs sm:text-sm text-[#45464d] mb-2">
                   Leave a number in your message and a founder will call you back to arrange a scoping call.
                 </p>
-                <div className="flex items-center space-x-2">
-                  <a
-                    href="tel:+18005550123"
-                    className="text-sm font-semibold text-[#4648d4] hover:underline"
-                  >
-                    +1 (800) 555-0123
-                  </a>
-                  <button
-                    onClick={() => handleCopy('+18005550123', 'phone')}
-                    title="Copy phone number"
-                    className="text-[#76777d] hover:text-[#0b1c30] p-1 rounded transition-colors"
-                  >
-                    {copiedPhone ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
-                  </button>
+                <div className="flex flex-col space-y-1">
+                  {[
+                    { display: '+44 (800) 555-0123', tel: '+18005550123' },
+                    { display: '+91 (7974) 054 016', tel: '+917974054016' },
+                    { display: '+91 (8880) 807 604', tel: '+918880807604' },
+                  ].map((num) => (
+                    <div key={num.tel} className="flex items-center space-x-2">
+                      <a
+                        href={`tel:${num.tel}`}
+                        className="text-sm font-semibold text-[#4648d4] hover:underline"
+                      >
+                        {num.display}
+                      </a>
+                      <button
+                        onClick={() => handleCopy(num.tel, 'phone')}
+                        title="Copy phone number"
+                        className="text-[#76777d] hover:text-[#0b1c30] p-1 rounded transition-colors"
+                      >
+                        {copiedPhone === num.tel ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

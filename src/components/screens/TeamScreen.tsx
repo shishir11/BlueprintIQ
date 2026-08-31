@@ -196,9 +196,7 @@ export const TeamScreen: React.FC<TeamScreenProps> = ({
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">
               Working with us
             </h2>
-            <p className="text-sm sm:text-base text-[#7c839b] mb-8 max-w-xl mx-auto leading-relaxed">
-              We are pre-incorporation and selecting design partners in UK and EU financial services. If you want to put a specific decision in front of a named architect, start with a scoping call.
-            </p>
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 onClick={onOpenContact}

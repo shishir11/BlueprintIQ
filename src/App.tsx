@@ -12,7 +12,6 @@ import { WatchDemoModal } from './components/modals/WatchDemoModal';
 import { HelpCenterModal } from './components/modals/HelpCenterModal';
 import { CareersModal } from './components/modals/CareersModal';
 import { TeamMemberModal } from './components/modals/TeamMemberModal';
-import { Layers } from 'lucide-react';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<TabType>('home');
@@ -91,9 +90,6 @@ export default function App() {
         aria-label="Screen Quick Switcher"
         className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-[#0f172a]/95 text-white backdrop-blur-md px-3 py-2 rounded-full shadow-2xl border border-[#334155] flex items-center space-x-1.5 text-xs font-medium"
       >
-        <span className="text-[#94a3b8] px-2 hidden sm:inline flex items-center">
-          <Layers className="w-3.5 h-3.5 mr-1 text-[#818cf8]" /> View:
-        </span>
         <button
           onClick={() => handleSelectTab('home')}
           className={`px-3 py-1.5 rounded-full transition-all cursor-pointer ${
