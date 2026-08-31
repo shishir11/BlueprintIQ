@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { OFFICE_LOCATIONS } from '../../data/appData';
 import { ContactInquiry } from '../../types';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  HelpCircle, 
-  ArrowRight, 
-  CheckCircle2, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  HelpCircle,
+  ArrowRight,
+  CheckCircle2,
   AlertCircle,
   Copy,
   Check
@@ -31,7 +31,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,8 +60,8 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
       setCopiedEmail(true);
       setTimeout(() => setCopiedEmail(false), 2000);
     } else {
-      setCopiedPhone(true);
-      setTimeout(() => setCopiedPhone(false), 2000);
+      setCopiedPhone(text);
+      setTimeout(() => setCopiedPhone(null), 2000);
     }
   };
 
@@ -70,10 +70,10 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
       {/* Hero Header */}
       <section className="text-center pt-12 pb-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0b1c30] mb-4 tracking-tight">
-          Get in Touch
+          Get in touch
         </h1>
         <p className="text-base sm:text-lg text-[#45464d] max-w-2xl mx-auto leading-relaxed">
-          Our enterprise solutions team is ready to assist you. Whether you have questions about BlueprintIQ capabilities, pricing, or technical integrations, we&apos;re here to help.
+          Tell us the decision you are trying to make. A founder reads every message and replies within one working day.
         </p>
       </section>
 
@@ -86,7 +86,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
               Send us a message
             </h2>
             <p className="text-sm text-[#45464d] mb-6">
-              Fill out the form below and a representative will get back to you within 24 hours.
+              Fill out the form below and a founder will get back to you within one working day.
             </p>
 
             {status === 'success' ? (
@@ -94,9 +94,9 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                 <div className="w-14 h-14 bg-[#4648d4] text-white rounded-full flex items-center justify-center mx-auto shadow-md">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0b1c30]">Inquiry Received</h3>
+                <h3 className="text-xl font-bold text-[#0b1c30]">Message received</h3>
                 <p className="text-sm text-[#45464d] max-w-md mx-auto">
-                  Thank you, <span className="font-semibold text-[#0b1c30]">{formData.firstName}</span>! We have routed your inquiry to our enterprise solutions team. A technical representative will follow up at <span className="font-semibold text-[#0b1c30]">{formData.workEmail}</span> shortly.
+                  Thank you, <span className="font-semibold text-[#0b1c30]">{formData.firstName}</span>. A founder will follow up at <span className="font-semibold text-[#0b1c30]">{formData.workEmail}</span> within one working day.
                 </p>
                 <button
                   onClick={() => {
@@ -111,7 +111,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                   }}
                   className="px-5 py-2.5 rounded-lg bg-[#4648d4] text-white text-sm font-semibold hover:bg-[#3738b5] transition-colors"
                 >
-                  Send Another Inquiry
+                  Send another message
                 </button>
               </div>
             ) : (
@@ -179,7 +179,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                   <input
                     id="company-name-input"
                     type="text"
-                    placeholder="Acme Corp"
+                    placeholder="Your organisation"
                     value={formData.companyName}
                     onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-lg border border-[#c6c6cd]/80 bg-[#f8f9ff] text-sm text-[#0b1c30] placeholder-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#4648d4]/40 focus:border-[#4648d4] transition-all"
@@ -212,11 +212,11 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                   {status === 'submitting' ? (
                     <div className="flex items-center space-x-2">
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>Transmitting Inquiry...</span>
+                      <span>Sending...</span>
                     </div>
                   ) : (
                     <>
-                      <span>Submit Inquiry</span>
+                      <span>Send message</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}
@@ -233,19 +233,19 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                 <Mail className="w-5 h-5" />
               </div>
               <div className="flex-grow">
-                <h3 className="text-base font-bold text-[#0b1c30]">Sales and Support</h3>
+                <h3 className="text-base font-bold text-[#0b1c30]">Enquiries</h3>
                 <p className="text-xs sm:text-sm text-[#45464d] mb-2">
-                  Our technical team is here to help.
+                  Tell us the decision you are trying to make. We reply within one working day.
                 </p>
                 <div className="flex items-center space-x-2">
                   <a
-                    href="mailto:support@blueprintiq.com"
+                    href="mailto:hello@blueprint-iq.uk"
                     className="text-sm font-semibold text-[#4648d4] hover:underline"
                   >
-                    support@blueprintiq.com
+                   support@blueprint-iq.uk
                   </a>
                   <button
-                    onClick={() => handleCopy('support@blueprintiq.com', 'email')}
+                    onClick={() => handleCopy('hello@blueprint-iq.uk', 'email')}
                     title="Copy email address"
                     className="text-[#76777d] hover:text-[#0b1c30] p-1 rounded transition-colors"
                   >
@@ -261,35 +261,58 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
                 <Phone className="w-5 h-5" />
               </div>
               <div className="flex-grow">
-                <h3 className="text-base font-bold text-[#0b1c30]">Sales</h3>
+                <h3 className="text-base font-bold text-[#0b1c30]">Prefer to talk?</h3>
                 <p className="text-xs sm:text-sm text-[#45464d] mb-2">
-                  Talk to our enterprise sales team.
+                  Leave a number in your message and a founder will call you back to arrange a scoping call.
                 </p>
-                <div className="flex items-center space-x-2">
-                  <a
-                    href="tel:+18005550123"
-                    className="text-sm font-semibold text-[#4648d4] hover:underline"
-                  >
-                    +1 (800) 555-0123
-                  </a>
-                  <button
-                    onClick={() => handleCopy('+18005550123', 'phone')}
-                    title="Copy phone number"
-                    className="text-[#76777d] hover:text-[#0b1c30] p-1 rounded transition-colors"
-                  >
-                    {copiedPhone ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
-                  </button>
+                <div className="flex flex-col space-y-1">
+                  {[
+                    { display: '+44 (800) 555-0123', tel: '+18005550123' },
+                    { display: '+91 (7974) 054 016', tel: '+917974054016' },
+                    { display: '+91 (8880) 807 604', tel: '+918880807604' },
+                  ].map((num) => (
+                    <div key={num.tel} className="flex items-center space-x-2">
+                      <a
+                        href={`tel:${num.tel}`}
+                        className="text-sm font-semibold text-[#4648d4] hover:underline"
+                      >
+                        {num.display}
+                      </a>
+                      <button
+                        onClick={() => handleCopy(num.tel, 'phone')}
+                        title="Copy phone number"
+                        className="text-[#76777d] hover:text-[#0b1c30] p-1 rounded transition-colors"
+                      >
+                        {copiedPhone === num.tel ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Global Offices Container */}
+            {/* Where we are Container */}
             <div className="bg-white border border-[#c6c6cd]/50 rounded-xl p-6 shadow-sm space-y-6">
               <h3 className="text-base font-bold text-[#0b1c30]">
-                Global Offices
+                Where we are
               </h3>
 
-              {OFFICE_LOCATIONS.map((office, idx) => (
+              <div className="flex items-start space-x-3.5 pt-1">
+                <MapPin className="w-5 h-5 text-[#4648d4] shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#4648d4]">
+                    UK and EU
+                  </span>
+                  <h4 className="text-sm font-bold text-[#0b1c30] mt-0.5">
+                    United Kingdom, remote
+                  </h4>
+                  <p className="text-xs text-[#45464d] mt-1">
+                    We work remotely with clients across the UK and EU. Pre-incorporation, so we do not run public offices yet.
+                  </p>
+                </div>
+              </div>
+
+              {OFFICE_LOCATIONS.map((office) => (
                 <div key={office.city} className="flex items-start space-x-3.5 pt-1">
                   <MapPin className="w-5 h-5 text-[#4648d4] shrink-0 mt-0.5" />
                   <div>
@@ -323,7 +346,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({
             Looking for quick answers?
           </h2>
           <p className="text-sm sm:text-base text-[#9ca3af] max-w-xl mx-auto leading-relaxed">
-            Check out our comprehensive Help Center for documentation, API references, and frequently asked questions.
+            The help centre covers what a blueprint contains, how an engagement works, and how we handle your material.
           </p>
           <div className="pt-2">
             <button

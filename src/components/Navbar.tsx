@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TabType } from '../types';
-import { Menu, X, Sparkles, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 interface NavbarProps {
   currentTab: TabType;
@@ -72,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             id="nav-get-started-btn"
             className="bg-[#4648d4] hover:bg-[#3738b5] text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm shadow-[#4648d4]/25 hover:shadow-md hover:shadow-[#4648d4]/35 active:scale-98 cursor-pointer"
           >
-            Get Started
+            Book a scoping call
           </button>
         </div>
 
@@ -112,15 +112,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             );
           })}
           <div className="pt-3 border-t border-[#eff4ff] flex flex-col space-y-2">
-            <button
-              onClick={() => {
-                onSelectTab('contact');
-                setMobileMenuOpen(false);
-              }}
+            <a
+              href="mailto:hello@blueprint-iq.uk"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center py-2 text-sm font-medium text-[#45464d] hover:text-[#0b1c30]"
             >
-              Login
-            </button>
+              Email us
+            </a>
             <button
               onClick={() => {
                 onOpenGetStarted();
@@ -128,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="w-full py-2.5 bg-[#4648d4] text-white rounded-lg text-sm font-semibold shadow-sm text-center flex items-center justify-center space-x-2"
             >
-              <span>Get Started</span>
+              <span>Book a scoping call</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

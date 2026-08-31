@@ -1,13 +1,10 @@
 import React from 'react';
-import { 
-  ArrowRight, 
-  BarChart3, 
-  Globe, 
-  ShieldCheck, 
+import {
+  ArrowRight,
   CheckCircle2,
-  Cpu,
-  Boxes,
-  Sparkles
+  FileText,
+  Gauge,
+  BadgeCheck
 } from 'lucide-react';
 import heroBrainImg from '../../assets/images/ai_neural_brain_hero_1787291410887.jpg';
 
@@ -27,22 +24,36 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Heading, Pitch & CTA */}
           <div className="lg:col-span-6 space-y-6">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0b1c30] leading-[1.15]">
-              Scale Your AI Business Faster
-            </h1>
-            
-            <p className="text-sm sm:text-base text-[#45464d] leading-relaxed max-w-xl">
-              Your PRD or BRD already asks a different question — &ldquo;how should AI be introduced into their existing business function?&rdquo; — and nobody is answering it. That question needs regulatory judgment and reference architecture, which is exactly what your two founders have. Everything below follows from taking that seriously.
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#4648d4]">
+              AI feasibility and target architecture · UK and EU
             </p>
 
-            <div className="pt-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0b1c30] leading-[1.15]">
+              Find out if AI will beat what you already do
+            </h1>
+
+            <p className="text-sm sm:text-base text-[#45464d] leading-relaxed max-w-xl">
+              89% of enterprises now use AI. Only 6% see meaningful profit impact. BlueprintIQ reads the policies, requirements and code you already have, and returns an implementation-grade plan in days — every recommendation traced to a line in your own material, scored for confidence, and signed by a named architect.
+            </p>
+
+            <p className="text-xs text-[#64748b]">
+              McKinsey, The State of AI, August 2026 — n=1,719 across 97 countries
+            </p>
+
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={onOpenGetStarted}
-                id="home-hero-start-trial-btn"
-                className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-[#4648d4] hover:bg-[#3738b5] text-white font-medium text-sm sm:text-base shadow-md shadow-[#4648d4]/25 hover:shadow-lg hover:shadow-[#4648d4]/35 transition-all duration-200 active:scale-98 cursor-pointer"
+                id="home-hero-scoping-call-btn"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-lg bg-[#4648d4] hover:bg-[#3738b5] text-white font-medium text-sm sm:text-base shadow-md shadow-[#4648d4]/25 hover:shadow-lg hover:shadow-[#4648d4]/35 transition-all duration-200 active:scale-98 cursor-pointer"
               >
-                <span>Start Free Trial</span>
+                <span>Book a scoping call</span>
                 <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => onSelectTab('features')}
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-[#cbd5e1] text-[#0b1c30] hover:border-[#4648d4] hover:text-[#4648d4] font-medium text-sm sm:text-base transition-all duration-200 cursor-pointer"
+              >
+                See what a blueprint contains
               </button>
             </div>
           </div>
@@ -62,38 +73,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       </section>
 
-      {/* 2. Trusted By Logos Section */}
-      <section className="py-10 border-y border-[#e2e8f0]/70 bg-[#f8f9ff]">
+      {/* 2. Honest status line (replaces placeholder "trusted by" strip) */}
+      <section className="py-8 border-y border-[#e2e8f0]/70 bg-[#f8f9ff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#64748b] mb-6">
-            Trusted by Innovative Teams Worldwide
+          <p className="text-sm text-[#64748b]">
+            Pre-incorporation. Currently selecting design partners in UK and EU financial services.
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 md:gap-20 text-[#334155]">
-            {/* Acme Corp */}
-            <div className="flex items-center space-x-2.5 font-semibold text-base sm:text-lg text-[#1e293b]">
-              <div className="w-6 h-6 flex items-center justify-center text-[#4648d4]">
-                <Boxes className="w-5 h-5" />
-              </div>
-              <span className="tracking-tight">Acme Corp</span>
-            </div>
-
-            {/* Globex */}
-            <div className="flex items-center space-x-2.5 font-semibold text-base sm:text-lg text-[#1e293b]">
-              <div className="w-6 h-6 flex items-center justify-center text-[#4648d4]">
-                <Globe className="w-5 h-5" />
-              </div>
-              <span className="tracking-tight">Globex</span>
-            </div>
-
-            {/* Initech */}
-            <div className="flex items-center space-x-2.5 font-semibold text-base sm:text-lg text-[#1e293b]">
-              <div className="w-6 h-6 flex items-center justify-center text-[#4648d4]">
-                <Cpu className="w-5 h-5" />
-              </div>
-              <span className="tracking-tight">Initech</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -101,72 +86,72 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0b1c30] tracking-tight mb-3">
-            The mission control for your organization's AI journey.
+            An implementation-grade answer, in days
           </h2>
           <p className="text-sm sm:text-base text-[#45464d] max-w-xl mx-auto">
-               From strategy to impact see your AI transformation in real time.
+            Three things every blueprint does.
           </p>
         </div>
 
         {/* 3 Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {/* Card 1: Advanced Analytics */}
-          <div 
+          {/* Card 1: Grounded in your own material */}
+          <div
             onClick={() => onSelectTab('features')}
             className="bg-white rounded-2xl p-7 border border-[#e2e8f0] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#eff4ff] text-[#4648d4] flex items-center justify-center mb-6 ring-1 ring-[#d3e4fe]/80 group-hover:bg-[#4648d4] group-hover:text-white transition-colors duration-200">
-                <BarChart3 className="w-6 h-6" />
+                <FileText className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-[#0b1c30] mb-3 group-hover:text-[#4648d4] transition-colors">
-                Advanced Analytics
+                Grounded in your own material
               </h3>
               <p className="text-sm text-[#45464d] leading-relaxed">
-                  Multi-agent intelligence, one unified transformation blueprint.
+                We read your policies, requirements documents, data schemas and — at the design stage — your code. Every recommendation cites the document and section it came from. A claim that cannot be traced to your material is not written; it goes into a gap register instead, which is a deliverable in its own right.
               </p>
             </div>
           </div>
 
-          {/* Card 2: AI Strategy */}
-          <div 
+          {/* Card 2: Scored, not asserted */}
+          <div
             onClick={() => onSelectTab('features')}
             className="bg-white rounded-2xl p-7 border border-[#e2e8f0] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#eff4ff] text-[#4648d4] flex items-center justify-center mb-6 ring-1 ring-[#d3e4fe]/80 group-hover:bg-[#4648d4] group-hover:text-white transition-colors duration-200">
-                <Globe className="w-6 h-6" />
+                <Gauge className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-[#0b1c30] mb-3 group-hover:text-[#4648d4] transition-colors">
-                AI Strategy
+                Scored, not asserted
               </h3>
               <p className="text-sm text-[#45464d] leading-relaxed">
-                The AI Transformation Blueprint will be the company’s principal product. It will provide a comprehensive organisation-level strategy covering current-state assessment, target architecture, model options, data requirements, MLOps, deployment, investment, build-versus-buy decisions, and resourcing.
+                Each recommendation carries a confidence band based on how current, complete and consistent the evidence behind it is. The band governs the language: where we cannot verify a policy against its implementation, we say so on the page rather than in a footnote.
               </p>
             </div>
           </div>
 
-          {/* Card 3: Architectural Decision Record */}
-          <div 
+          {/* Card 3: Signed by a named architect */}
+          <div
             onClick={() => onSelectTab('features')}
             className="bg-white rounded-2xl p-7 border border-[#e2e8f0] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between group"
           >
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#eff4ff] text-[#4648d4] flex items-center justify-center mb-6 ring-1 ring-[#d3e4fe]/80 group-hover:bg-[#4648d4] group-hover:text-white transition-colors duration-200">
-                <ShieldCheck className="w-6 h-6" />
+                <BadgeCheck className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-[#0b1c30] mb-3 group-hover:text-[#4648d4] transition-colors">
-                Architectural Decision Record
+                Signed by a named architect
               </h3>
               <p className="text-sm text-[#45464d] leading-relaxed">
-                Your data is protected with enterprise-grade encryption and compliance standards. Rest easy knowing your business is secure.
+                No blueprint leaves without a human expert reviewing it and putting their name to a specific version. We publish the proportion of recommendations senior architects accept unchanged, and we hold ourselves to it.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Empowering Enterprise Intelligence */}
+      {/* 4. What the review gives you */}
       <section className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-b from-[#f8f9ff] via-[#edf4ff]/50 to-[#f8f9ff]">
         {/* Concentric subtle background glow circles */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -177,17 +162,17 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0b1c30] mb-8 tracking-tight">
-            Empowering Enterprise Intelligence
+            What the review gives you
           </h2>
 
           {/* Primary CTA Button */}
           <div className="mb-10 flex justify-center">
             <button
               onClick={onOpenGetStarted}
-              id="intelligence-start-trial-btn"
+              id="intelligence-scoping-call-btn"
               className="w-full sm:w-auto px-10 py-3.5 rounded-lg bg-[#4648d4] hover:bg-[#3738b5] text-white font-semibold text-base shadow-md shadow-[#4648d4]/30 hover:shadow-lg transition-all active:scale-98 cursor-pointer min-w-[260px]"
             >
-              Start Your Free Trial
+              Book a scoping call
             </button>
           </div>
 

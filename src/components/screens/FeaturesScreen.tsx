@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
 import { CORE_CAPABILITIES, ADR_RECORDS } from '../../data/appData';
-import { 
-  TrendingUp, 
-  GitFork, 
-  ShieldCheck, 
-  Users, 
-  Bot, 
-  Network, 
-  CheckCircle2, 
-  ArrowRight, 
-  Play, 
-  Sparkles,
+import {
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Play,
   FileText,
-  ChevronRight,
-  Code2,
-  Lock,
-  Zap
+  Gauge,
+  BadgeCheck,
+  ClipboardList,
+  Ruler
 } from 'lucide-react';
 
 interface FeaturesScreenProps {
@@ -38,13 +32,13 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
   const renderIcon = (iconName: string) => {
     const iconClass = "w-6 h-6 text-[#4648d4]";
     switch (iconName) {
-      case 'TrendingUp': return <TrendingUp className={iconClass} />;
-      case 'GitFork': return <GitFork className={iconClass} />;
+      case 'FileText': return <FileText className={iconClass} />;
+      case 'Gauge': return <Gauge className={iconClass} />;
       case 'ShieldCheck': return <ShieldCheck className={iconClass} />;
-      case 'Users': return <Users className={iconClass} />;
-      case 'Bot': return <Bot className={iconClass} />;
-      case 'Network': return <Network className={iconClass} />;
-      default: return <Sparkles className={iconClass} />;
+      case 'BadgeCheck': return <BadgeCheck className={iconClass} />;
+      case 'ClipboardList': return <ClipboardList className={iconClass} />;
+      case 'Ruler': return <Ruler className={iconClass} />;
+      default: return <FileText className={iconClass} />;
     }
   };
 
@@ -57,19 +51,22 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#d3e4fe]/50 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-[#dce9ff] text-[#2f2ebe] tracking-wider uppercase mb-5">
+            What a blueprint contains
+          </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0b1c30] leading-tight mb-6">
-            Empower Your Workflow with <span className="text-[#4648d4]">Next-Gen AI</span>
+            Every recommendation traced to a line in <span className="text-[#4648d4]">your own material</span>
           </h1>
           <p className="text-base sm:text-lg text-[#45464d] max-w-2xl mx-auto leading-relaxed mb-8">
-            Scale your business intelligently. SaaSPro&apos;s unified platform combines predictive analytics, automated workflows, and enterprise-grade security to transform how your team operates.
+            We read the policies, requirements and — at the design stage — code you already have, and return an implementation-grade plan in days. Each recommendation cites its source, carries a confidence band, and is signed by a named architect. Where the honest answer is not to build, we say so.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={onOpenGetStarted}
-              id="hero-start-free-trial-btn"
+              id="hero-book-scoping-call-btn"
               className="w-full sm:w-auto px-7 py-3 rounded-lg bg-[#4648d4] hover:bg-[#3738b5] text-white font-semibold text-base shadow-sm shadow-[#4648d4]/30 hover:shadow-md transition-all active:scale-98 cursor-pointer"
             >
-              Start Free Trial
+              Book a scoping call
             </button>
             <button
               onClick={onOpenWatchDemo}
@@ -77,7 +74,7 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
               className="w-full sm:w-auto px-7 py-3 rounded-lg bg-white hover:bg-[#f8f9ff] text-[#0b1c30] font-semibold text-base border border-[#c6c6cd]/80 hover:border-[#4648d4] shadow-sm transition-all flex items-center justify-center space-x-2 active:scale-98 cursor-pointer"
             >
               <Play className="w-4 h-4 text-[#4648d4] fill-[#4648d4]" />
-              <span>Watch Demo</span>
+              <span>Watch how an engagement runs</span>
             </button>
           </div>
         </div>
@@ -87,10 +84,10 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
       <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0b1c30] mb-3 tracking-tight">
-            Core Capabilities
+            What every blueprint does
           </h2>
           <p className="text-base text-[#45464d] max-w-xl mx-auto">
-            Everything you need to run a modern, data-driven enterprise.
+            Six things a general assistant cannot do: ground every claim in your material, score it, and stand behind it.
           </p>
         </div>
 
@@ -114,7 +111,7 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
               </div>
               {capability.metric && (
                 <div className="mt-5 pt-4 border-t border-[#f1f5f9] flex items-center justify-between text-xs text-[#4648d4] font-semibold">
-                  <span>Performance Benchmark</span>
+                  <span>What you get</span>
                   <span className="bg-[#eff4ff] px-2 py-0.5 rounded text-[#4648d4]">{capability.metric}</span>
                 </div>
               )}
@@ -131,34 +128,34 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
             <div className="lg:col-span-6 space-y-6">
               <div>
                 <span className="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-[#dce9ff] text-[#2f2ebe] tracking-wider uppercase mb-3">
-                  Advanced Capability
+                  Inside the blueprint
                 </span>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0b1c30] tracking-tight">
-                  Architectural Decision Records (ADRs)
+                  Decision records you can reproduce
                 </h2>
               </div>
 
               <p className="text-base text-[#45464d] leading-relaxed">
-                Maintain a clear history of your technical decisions. SaaSPro&apos;s built-in ADR framework allows engineering teams to document context, consequences, and compliance requirements directly alongside the architecture itself.
+                Every recommendation is recorded as a decision: the context we found in your material, what we decided, the confidence behind it, and the consequences. When a risk committee asks about it eighteen months later, the same finding can be reproduced from its evidence trail. The examples on the right are synthetic, not customer work.
               </p>
 
               <div className="space-y-3.5 pt-2">
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-[#4648d4] shrink-0 mt-0.5" />
                   <span className="text-sm font-medium text-[#0b1c30]">
-                    Standardized templates for consistency.
+                    Context traced to the document and section it came from.
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-[#4648d4] shrink-0 mt-0.5" />
                   <span className="text-sm font-medium text-[#0b1c30]">
-                    Version history and peer review workflows.
+                    A confidence band that governs the language we use.
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-[#4648d4] shrink-0 mt-0.5" />
                   <span className="text-sm font-medium text-[#0b1c30]">
-                    Automatic linking to relevant codebase sections.
+                    Signed off by a named architect against a specific version.
                   </span>
                 </div>
               </div>
@@ -168,7 +165,7 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
                   onClick={() => setAdrExpanded(!adrExpanded)}
                   className="inline-flex items-center text-[#4648d4] hover:text-[#3738b5] font-semibold text-sm group cursor-pointer"
                 >
-                  <span>{adrExpanded ? 'Collapse ADR Details' : 'Explore ADR Documentation'}</span>
+                  <span>{adrExpanded ? 'Collapse the record' : 'Read a full record'}</span>
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -194,7 +191,7 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
                       </button>
                     ))}
                   </div>
-                  <span className="text-xs text-[#76777d]">Live Record</span>
+                  <span className="text-xs text-[#76777d]">Synthetic example</span>
                 </div>
 
                 {/* Card Title & Authors */}
@@ -281,17 +278,17 @@ export const FeaturesScreen: React.FC<FeaturesScreenProps> = ({
         <div className="absolute inset-0 opacity-10 bg-grid-glow pointer-events-none" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-            Ready to experience the future of SaaS?
+            Put a real decision in front of us
           </h2>
           <p className="text-sm sm:text-base text-[#94a3b8] max-w-xl mx-auto mb-8 leading-relaxed">
-            Join thousands of forward-thinking enterprises building smarter, faster, and more securely with SaaSPro.
+            Bring the use case you are weighing up. We will tell you whether we can assess it, what we would need, and how long it would take. We are pre-incorporation and selecting design partners in UK and EU financial services.
           </p>
           <button
             onClick={onOpenGetStarted}
-            id="cta-start-free-trial-btn"
+            id="cta-book-scoping-call-btn"
             className="px-8 py-3.5 rounded-lg bg-[#4648d4] hover:bg-[#3738b5] text-white font-semibold text-base shadow-lg shadow-[#4648d4]/40 hover:shadow-[#4648d4]/60 transition-all active:scale-98 cursor-pointer"
           >
-            Start Your Free Trial
+            Book a scoping call
           </button>
         </div>
       </section>

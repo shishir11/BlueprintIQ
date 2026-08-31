@@ -1,6 +1,6 @@
 import React from 'react';
 import { TeamMember } from '../../types';
-import { X, Mail, MapPin, Sparkles, Building2, CheckCircle2 } from 'lucide-react';
+import { X, Mail } from 'lucide-react';
 
 interface TeamMemberModalProps {
   member: TeamMember | null;
@@ -89,7 +89,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
               }}
               className="flex-1 py-2.5 px-4 bg-[#4648d4] hover:bg-[#3738b5] text-white font-semibold text-xs rounded-lg flex items-center justify-center space-x-2 transition-colors"
             >
-              <span>Schedule Meeting</span>
+              <span>Book a scoping call</span>
             </button>
           </div>
         </div>

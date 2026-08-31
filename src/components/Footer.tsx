@@ -23,19 +23,13 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-[#94a3b8]">
-            <a href="#privacy" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#terms" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors">
-              Terms of Service
-            </a>
-            <button 
+            <button
               onClick={() => onSelectTab('contact')}
               className="hover:text-white transition-colors cursor-pointer"
             >
               Contact Us
             </button>
-            <button 
+            <button
               onClick={() => onSelectTab('team')}
               className="hover:text-white transition-colors cursor-pointer"
             >
@@ -45,7 +39,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Copyright */}
           <div className="text-xs text-[#94a3b8]">
-            © {new Date().getFullYear()} BlueprintIQ Inc. All rights reserved.
+            © {new Date().getFullYear()} {brandName}
           </div>
         </div>
       </div>

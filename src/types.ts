@@ -55,5 +55,5 @@ export interface JobOpening {
 export interface FAQItem {
   question: string;
   answer: string;
-  category: 'Platform' | 'Billing' | 'Security' | 'API';
+  category: 'Product' | 'Engagement' | 'Security' | 'Evidence';
 }
