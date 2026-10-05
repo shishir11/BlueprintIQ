@@ -12,9 +12,12 @@ import { WatchDemoModal } from './components/modals/WatchDemoModal';
 import { HelpCenterModal } from './components/modals/HelpCenterModal';
 import { CareersModal } from './components/modals/CareersModal';
 import { TeamMemberModal } from './components/modals/TeamMemberModal';
+import { LoginScreen } from './components/portal/screens/LoginScreen';
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<TabType>('home');
+  const [currentTab, setCurrentTab] = useState<TabType>(() =>
+    new URLSearchParams(window.location.search).get('screen') === 'login' ? 'login' : 'home'
+  );
   const [getStartedOpen, setGetStartedOpen] = useState(false);
   const [watchDemoOpen, setWatchDemoOpen] = useState(false);
   const [helpCenterOpen, setHelpCenterOpen] = useState(false);
@@ -74,6 +77,8 @@ export default function App() {
             onOpenContact={() => handleSelectTab('contact')}
           />
         )}
+
+        {currentTab === 'login' && <LoginScreen />}
 
         {currentTab === 'about' && (
           <TeamScreen

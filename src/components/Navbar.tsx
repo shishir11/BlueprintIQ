@@ -68,6 +68,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Trailing Actions */}
         <div className="hidden md:flex items-center space-x-4">
           <button
+            onClick={() => onSelectTab('login')}
+            id="nav-client-login-btn"
+            className={`text-sm transition-colors cursor-pointer ${
+              currentTab === 'login'
+                ? 'font-semibold text-[#4648d4]'
+                : 'font-medium text-[#45464d] hover:text-[#4648d4]'
+            }`}
+          >
+            Client login
+          </button>
+          <button
             onClick={onOpenGetStarted}
             id="nav-get-started-btn"
             className="bg-[#4648d4] hover:bg-[#3738b5] text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm shadow-[#4648d4]/25 hover:shadow-md hover:shadow-[#4648d4]/35 active:scale-98 cursor-pointer"
@@ -112,6 +123,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             );
           })}
           <div className="pt-3 border-t border-[#eff4ff] flex flex-col space-y-2">
+            <button
+              onClick={() => {
+                onSelectTab('login');
+                setMobileMenuOpen(false);
+              }}
+              className="w-full text-left px-3 py-2.5 rounded-lg text-base font-medium text-[#45464d] hover:bg-[#f8f9ff] hover:text-[#0b1c30]"
+            >
+              Client login
+            </button>
             <a
               href="mailto:hello@blueprint-iq.uk"
               onClick={() => setMobileMenuOpen(false)}
