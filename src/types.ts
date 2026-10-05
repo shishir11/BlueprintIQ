@@ -1,4 +1,7 @@
-export type TabType = 'home' | 'features' | 'team' | 'contact' | 'pricing' | 'about' | 'login';
+export type TabType =
+  | 'home' | 'features' | 'team' | 'contact' | 'pricing' | 'about' | 'login'
+  | 'portal-onboarding' | 'portal-billing' | 'portal-invoicing'
+  | 'portal-ingestion' | 'portal-governance' | 'portal-output';
 
 export interface TeamMember {
   id: string;

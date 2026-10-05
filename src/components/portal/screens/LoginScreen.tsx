@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import {
-  AlertCircle,
-  ArrowRight,
-  Building2,
-  Gem,
-  KeyRound,
-  Loader2,
-  Lock,
-  Mail,
-  ShieldCheck,
+  AlertCircle, ArrowRight, Building2, Gem, KeyRound, Loader2, Lock, Mail, ShieldCheck,
 } from 'lucide-react';
 import { btnPrimary } from '../../ui';
 import { Field } from '../ui/Field';
 import { SegmentedControl, type SegmentOption } from '../ui/SegmentedControl';
+import { usePortalSession } from '../session/PortalSession';
+import { DEMO_CREDENTIALS } from '../data/accounts';
 
 /* Login / SSO gateway — static UI built from `login sso.png`.
-   No auth provider and no network call: submit validates locally and hands the payload to
-   an optional onSubmit. Content below is supplied mockup placeholder data. */
+   No auth provider and no network call: credentials are matched in memory by PortalSession.
+   The content below is supplied mockup placeholder data. */
 
 type AuthMode = 'sso' | 'email';
 
@@ -44,77 +38,49 @@ const ZERO_TRUST = {
   chips: ['SOC2 Type II', 'ISO 27001', 'GDPR Ready', 'HIPAA Enforced'],
 };
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-export interface LoginSubmission {
-  mode: AuthMode;
-  domain?: string;
-  email?: string;
-}
-
 interface LoginScreenProps {
-  onSubmit?: (submission: LoginSubmission) => void | Promise<void>;
+  onSignedIn?: () => void;
 }
 
-export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
+export const LoginScreen: React.FC<LoginScreenProps> = ({ onSignedIn }) => {
+  const { signIn, pending, error, clearError } = usePortalSession();
   const [mode, setMode] = useState<AuthMode>('sso');
   // Held per field so switching tabs never discards what was typed.
   const [domain, setDomain] = useState('');
   const [email, setEmail] = useState('');
   const [secret, setSecret] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const [invalidField, setInvalidField] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const validate = (): { message: string; field: string } | null => {
-    if (mode === 'sso') {
-      const value = domain.trim();
-      if (!value) return { message: 'Enter your corporate domain or tenant ID.', field: 'domain' };
-      if (/\s/.test(value) || value.length < 3) {
-        return { message: 'That does not look like a domain or tenant ID.', field: 'domain' };
-      }
-      return null;
-    }
-    if (!EMAIL_PATTERN.test(email.trim())) {
-      return { message: 'Enter a valid work email address.', field: 'email' };
-    }
-    if (!secret) {
-      return { message: 'Enter your password or access code.', field: 'secret' };
-    }
-    return null;
-  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (loading) return;
-
-    const failure = validate();
-    if (failure) {
-      setError(failure.message);
-      setInvalidField(failure.field);
-      return;
-    }
-
-    setError(null);
-    setInvalidField(null);
-    setLoading(true);
-    try {
-      // Without a handler there is nothing to wait for; hold briefly so the pending state is real.
-      await (onSubmit
-        ? onSubmit(mode === 'sso' ? { mode, domain: domain.trim() } : { mode, email: email.trim() })
-        : new Promise<void>((resolve) => setTimeout(resolve, 600)));
-    } finally {
-      setLoading(false);
-    }
+    if (pending) return;
+    const user = await signIn(
+      mode === 'sso'
+        ? { mode: 'sso', domain }
+        : { mode: 'email', email, password: secret }
+    );
+    if (user) onSignedIn?.();
   };
 
   const changeMode = (next: AuthMode) => {
     setMode(next);
-    setError(null);
-    setInvalidField(null);
+    clearError();
+  };
+
+  const fill = (row: (typeof DEMO_CREDENTIALS)[number]) => {
+    clearError();
+    if (row.route === 'sso') {
+      setMode('sso');
+      setDomain(row.enter);
+    } else {
+      setMode('email');
+      setEmail(row.enter);
+      setSecret(row.password ?? '');
+    }
   };
 
   const errorId = 'portal-login-error';
+  const invalidDomain = Boolean(error) && mode === 'sso';
+  const invalidEmail = Boolean(error) && mode === 'email';
 
   return (
     <div className="flex w-full justify-center bg-background px-4 py-12 sm:px-6 sm:py-16">
@@ -123,7 +89,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
           <div className="h-1.5 bg-primary" />
 
           <div className="px-6 py-8 sm:px-10 sm:py-10">
-            {/* Brand lockup */}
             <div className="flex items-center justify-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-input bg-primary">
                 <Gem className="h-5 w-5 text-white" aria-hidden="true" />
@@ -163,10 +128,10 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
                     autoComplete="organization"
                     help="Federated routes dynamically resolve your Identity Provider (IdP) metadata."
                     value={domain}
-                    onChange={setDomain}
-                    invalid={invalidField === 'domain'}
+                    onChange={(v) => { if (error) clearError(); setDomain(v); }}
+                    invalid={invalidDomain}
                     describedBy={error ? errorId : undefined}
-                    disabled={loading}
+                    disabled={pending}
                   />
                 </div>
               ) : (
@@ -182,13 +147,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
                     caption="Directory Lookup"
                     icon={Mail}
                     type="email"
-                    placeholder="jane@acme-corp.com"
-                    autoComplete="email"
+                    placeholder="e.vance@acmeglobal.com"
+                    autoComplete="username"
                     value={email}
-                    onChange={setEmail}
-                    invalid={invalidField === 'email'}
+                    onChange={(v) => { if (error) clearError(); setEmail(v); }}
+                    invalid={invalidEmail}
                     describedBy={error ? errorId : undefined}
-                    disabled={loading}
+                    disabled={pending}
                   />
                   <Field
                     id="portal-login-secret"
@@ -199,10 +164,10 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
                     autoComplete="current-password"
                     help="Single-use codes expire five minutes after they are issued."
                     value={secret}
-                    onChange={setSecret}
-                    invalid={invalidField === 'secret'}
+                    onChange={(v) => { if (error) clearError(); setSecret(v); }}
+                    invalid={invalidEmail}
                     describedBy={error ? errorId : undefined}
-                    disabled={loading}
+                    disabled={pending}
                   />
                 </div>
               )}
@@ -216,8 +181,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
                 )}
               </div>
 
-              <button type="submit" disabled={loading} className={`${btnPrimary} w-full py-3.5`}>
-                {loading ? (
+              <button type="submit" disabled={pending} className={`${btnPrimary} w-full py-3.5`}>
+                {pending ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />
                     <span>Authenticating</span>
@@ -231,7 +196,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
               </button>
             </form>
 
-            {/* Divider */}
             <div className="mt-8 flex items-center gap-4">
               <span className="h-px flex-1 bg-border-subtle" />
               <span className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground-muted">
@@ -240,7 +204,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
               <span className="h-px flex-1 bg-border-subtle" />
             </div>
 
-            {/* Provider row */}
             <div className="mt-6 flex flex-col gap-4 rounded-card bg-primary-tint p-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-start gap-3">
                 <KeyRound className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
@@ -258,7 +221,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
             </div>
           </div>
 
-          {/* Authority panel, attached to the card's foot */}
           <div className="border-t border-border-subtle bg-primary-tint px-6 py-6 sm:px-10">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-5 w-5 text-primary" aria-hidden="true" />
@@ -268,7 +230,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
           </div>
         </div>
 
-        {/* Zero-trust strip */}
         <div className="mt-6 rounded-card bg-primary-tint px-6 py-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
@@ -288,6 +249,35 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit }) => {
             ))}
           </ul>
         </div>
+
+        {/* Demo credentials — development only, excluded from production builds */}
+        {import.meta.env.DEV && (
+          <div
+            id="portal-demo-credentials"
+            className="mt-6 rounded-card border border-border-subtle bg-surface p-5"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground-muted">
+              Demo credentials (development only)
+            </p>
+            <ul className="mt-3 space-y-2">
+              {DEMO_CREDENTIALS.map((row) => (
+                <li key={`${row.route}-${row.enter}`}>
+                  <button
+                    type="button"
+                    onClick={() => fill(row)}
+                    className="flex w-full flex-wrap items-center justify-between gap-2 rounded-input border border-border-subtle px-3 py-2 text-left text-xs transition hover:border-primary hover:bg-primary-tint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary cursor-pointer"
+                  >
+                    <span className="font-medium text-ink">
+                      {row.route === 'sso' ? 'SSO' : 'Email'} · {row.enter}
+                      {row.password ? ` / ${row.password}` : ''}
+                    </span>
+                    <span className="text-foreground-muted">{row.signsInAs}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
