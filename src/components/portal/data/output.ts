@@ -24,7 +24,7 @@ export const OUTPUT_HEADER = {
     + '(US-East & US-Central).',
   sourcesLabel: 'Ingested Specifications (RAG Synced):',
   sources: ['BRD_v2.4.pdf', 'PRD_2025_Q4.pdf', 'CoreEngine_SDD_RevC.pdf', 'FedRAMP_Topology.pdf', 'DB_Schema_ERD', 'Static_Audit.sha256'],
-  actions: ['Export Executive Blueprint (PDF)', 'Deploy Enclave Pipeline', 'Run Guardrail Simulator'],
+  actions: ['Export Comprehensive Static Site', 'Export Executive Blueprint (PDF)', 'Send final assessment via email'],
 };
 
 export const OUTPUT_METRICS: MetricTileData[] = [

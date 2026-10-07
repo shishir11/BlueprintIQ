@@ -32,7 +32,7 @@ export interface LedgerRow {
 }
 
 export const INGESTION_HEADER = {
-  title: 'Repository',
+  title: 'Document Ingestion',
   intro:
     'Upload, validate, and extract automated compliance metrics from baseline enterprise '
     + 'architecture artifacts. Strict compliance gates mandate standardized PDF format (.pdf) '
@@ -41,7 +41,7 @@ export const INGESTION_HEADER = {
 };
 
 export const INGESTION_PROTOCOL = {
-  title: 'Strict Ingestion Protocol: Adobe PDF / A-1b Only',
+  title: 'Strict Ingestion Protocol: Encrypted PDF ',
   chip: 'MAX 100MB / FILE',
   body:
     'All design schematics, enterprise architecture blueprints, and code audits must be compiled '

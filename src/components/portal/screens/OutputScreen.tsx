@@ -47,7 +47,10 @@ export const OutputScreen: React.FC = () => {
             <Download className="h-4 w-4" aria-hidden="true" />
             {OUTPUT_HEADER.actions[0]}
           </button>
-          <button type="button" className={`${btnSecondary} px-4 py-2.5`}>{OUTPUT_HEADER.actions[1]}</button>
+         <button type="button" className={`${btnSecondary} px-4 py-2.5`}>
+            <Download className="h-4 w-4" aria-hidden="true" />
+            {OUTPUT_HEADER.actions[1]}
+          </button>
           <button type="button" className={`${btnSecondary} px-4 py-2.5`}>
             <Play className="h-4 w-4" aria-hidden="true" />
             {OUTPUT_HEADER.actions[2]}
