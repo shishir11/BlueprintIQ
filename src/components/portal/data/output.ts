@@ -16,14 +16,14 @@ export interface PatternCard {
 
 export const OUTPUT_HEADER = {
   chips: ['ENTERPRISE SYNTHESIS HUB', 'Acme Global Technologies Inc.', 'Fintech & Banking Tier'],
-  meta: ['$48,000 ACV Tier', 'v3.4 Production Signed'],
+  meta: ['Professional Tier', 'v3.4 Production Signed'],
   title: 'Autonomous AI Strategy & Architecture Synthesis',
   intro:
     'Deterministic technical evaluation, multi-tenant hybrid schema, distributed OCR-Kafka ETL '
     + 'pipelines, and cryptographic safety assurance for multi-region enclave operations '
     + '(US-East & US-Central).',
   sourcesLabel: 'Ingested Specifications (RAG Synced):',
-  sources: ['BRD_v2.4.pdf', 'PRD_2025_Q4.pdf', 'CoreEngine_SDD_RevC.pdf', 'FedRAMP_Topology.pdf', 'DB_Schema_ERD', 'Static_Audit.sha256'],
+  sources: ['BRD.pdf', 'PRD.pdf', 'SDD.pdf', 'Database Design', 'Infra Design'],
   actions: ['Export Comprehensive Static Site', 'Export Executive Blueprint (PDF)', 'Send final assessment via email'],
 };
 
@@ -37,59 +37,69 @@ export const OUTPUT_METRICS: MetricTileData[] = [
     ],
   },
   {
-    label: 'Sanitization & Safety', value: '99.98%',
+    label: 'Compliance and Security', value: '9',
     rows: [
-      { label: 'Tested', value: '1.82M toks' },
+      { label: 'Tested', value: '9' },
       { label: 'PII Leaks', value: '0' },
       { label: 'Status', value: 'Enforced' },
     ],
   },
   {
-    label: 'Topology Mapping', value: '42 / 18',
+    label: 'ADR', value: '12 / 8',
     rows: [
-      { label: 'Services', value: '42 Micro' },
-      { label: 'Pipelines', value: '18 Streaming' },
-      { label: 'Mode', value: 'Dual-AZ' },
+      { label: 'Tested', value: '8' },
+      { label: 'Drafted', value: '4' },
+      { label: 'Mode', value: 'AI Generated' },
     ],
   },
   {
-    label: 'Efficiency & ROI', value: '3.8x Velocity',
+    label: 'Data Governance', value: '6',
     rows: [
-      { label: 'Cloud Savings', value: '$1.42M/yr' },
-      { label: 'TTV', value: '90 Days' },
+      { label: 'Governance Roles & Accountability', value: '4' },
+      { label: 'Data Lifecycle Governance', value: '9' },
+      { label: 'Data Classification & Usage Matrix', value: '8' },
+      { label: 'Compliance & Regulatory', value: '4' },
+      { label: 'Security & Privacy', value: '4' }
     ],
   },
 ];
 
 export const VALUE_PROPOSITION = {
   title: 'AI Strategy & Executive Value Proposition',
-  subtitle: 'Core generative AI capability roadmap synthesized from Acme BRD v2.4',
+  subtitle: 'Our AI vision is to transform Company Name into an AI-augmented enterprise that leverages data and intelligent automation to accelerate innovation, enhance customer experience, and streamline operations by Target Year.',
   badge: '90-Day Time-to-Value',
 };
 
 export const PATTERN_CARDS: PatternCard[] = [
   {
-    tag: 'PRIMARY PATTERN', adoption: 'Adopted 85%',
-    title: 'Hybrid Graph-RAG Architecture',
+    tag: 'Strategic Objectives 1', adoption: 'Adopted 85%',
+    title: 'Operational Efficiency',
     body:
-      'Contextual extraction across transactional ledger data and compliance documents using dense '
-      + 'embeddings (text-embedding-3-large, 1536 dims) coupled with Neo4j semantic AST linkage. '
-      + 'Eliminates catastrophic forgetting, preserves audit provenance.',
+      'Automate manual document workflows and routine '
+      + 'customer queries.',
     stats: [
-      { label: '$0.0018 / 1k queries', value: '' },
-      { label: 'Deterministic citations', value: '' },
+      { label: 'Reduction in processing time', value: '30%' },
+      { label: 'Annual cost savings.', value: '$2M' },
     ],
   },
   {
-    tag: 'TARGETED PATTERN', adoption: 'Adopted 15%',
-    title: 'LoRA Parameter-Efficient Fine-Tuning',
+    tag: 'Strategic Objectives 2', adoption: 'Adopted 15%',
+    title: 'Revenue Growth',
     body:
-      'Targeted domain adaptation for proprietary Acme banking transactional dialect and regulatory '
-      + 'reporting. Hosted on private dedicated GPU clusters with spot orchestration. Strict enclave '
-      + 'data isolation.',
+      'Embed predictive recommendations and '
+      + 'hyper-personalised offerings into products.',
     stats: [
-      { label: '8x H100 SXM5 Enclave', value: '' },
-      { label: 'Weekly checkpoints', value: '' },
+      { label: 'Increase in cross-sell conversion rate.', value: '15%' },
+    ],
+  },
+  {
+    tag: 'Strategic Objectives 3', adoption: 'Adopted 25%',
+    title: 'Innovation & Speed',
+    body:
+      'Equip engineers and knowledge workers with '
+      + 'generative AI assistants.',
+    stats: [
+      { label: 'boost in developer velocity and content drafting.', value: '25%' },
     ],
   },
 ];
@@ -116,8 +126,8 @@ export const EXECUTION_HORIZON = {
 };
 
 export const TOPOLOGY = {
-  title: 'Solution Design & Microservice Topology',
-  subtitle: 'Cryptographic ingress to hybrid inference gateway',
+  title: 'TECHNOLOGY, DATA, INFRASTRUCTURE AND AI ARCHITECTURE',
+  subtitle: 'Define the core foundational infrastructure, data readiness, and platform requirements needed to support scalable AI deployment.',
   badge: 'Throughput: 4,500 req/min',
   nodes: [
     { name: 'API Gateway & mTLS', detail: 'Envoy Proxy / gRPC', chip: '0.8ms p99' },
@@ -197,13 +207,14 @@ export const PIPELINE_STEPS = {
 };
 
 export const GUARDRAILS = {
-  title: 'Active Guardrails',
+  title: 'Active AI Guardrails',
   rows: [
-    { name: 'Inline Threat Mitigation', detail: '', badge: 'Armored', on: true },
-    { name: 'PII / PCI Redaction Filter', detail: 'AST Fact-Check (Threshold 98.7%)', badge: 'STRICT', on: true },
-    { name: 'Prompt Injection Barrier', detail: 'Heuristic + Semantic Classifier', badge: 'BLOCK', on: true },
-    { name: 'Hallucination Verification', detail: 'AST Fact-Check (Threshold 98.7%)', badge: '98.7%', on: true },
-    { name: 'SLA Latency Circuit Breaker', detail: 'Auto-fallback < 250ms threshold', badge: 'ARMED', on: true },
+    { name: 'AI Governance Board', detail: '', badge: 'Armored', on: true },
+    { name: 'AI Risk Assessments', detail: 'AST Fact-Check (Threshold 98.7%)', badge: 'STRICT', on: true },
+    { name: 'Training & Awareness', detail: 'Heuristic + Semantic Classifier', badge: 'BLOCK', on: true },
+    { name: 'AI Development Lifecycle', detail: 'AST Fact-Check (Threshold 98.7%)', badge: '98.7%', on: true },
+    { name: 'Monitoring & Auditing', detail: 'Auto-fallback < 250ms threshold', badge: 'ARMED', on: true },
+     { name: 'Continuous Improvement Program', detail: 'Auto-fallback < 250ms threshold', badge: 'ARMED', on: true },
   ],
   ledger: {
     title: 'Audit Ledger Trail (SHA-256)',

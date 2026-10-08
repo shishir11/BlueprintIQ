@@ -32,7 +32,7 @@ export interface ReadinessItem {
 
 export const ONBOARDING_HEADER = {
   breadcrumb: ['Tenants', 'Acme Global Ent.', 'Enterprise Workspace Provisioning'],
-  region: 'us-east-va-1',
+  region: 'eu-west-2',
   stepChip: 'Enterprise Setup: Step 3 of 7',
   tenantChip: 'Acme Global Ent.',
   systemStatus: 'All Systems Operational',
