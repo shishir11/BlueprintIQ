@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TabType, TeamMember } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -12,9 +12,13 @@ import { WatchDemoModal } from './components/modals/WatchDemoModal';
 import { HelpCenterModal } from './components/modals/HelpCenterModal';
 import { CareersModal } from './components/modals/CareersModal';
 import { TeamMemberModal } from './components/modals/TeamMemberModal';
+import { LoginScreen } from './components/portal/screens/LoginScreen';
+import { PortalRouter } from './components/portal/PortalRouter';
+import { PortalSessionProvider } from './components/portal/session/PortalSession';
+import { isPortalTab, syncSearch, tabFromSearch } from './components/portal/routing';
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<TabType>('home');
+  const [currentTab, setCurrentTab] = useState<TabType>(() => tabFromSearch(window.location.search) ?? 'home');
   const [getStartedOpen, setGetStartedOpen] = useState(false);
   const [watchDemoOpen, setWatchDemoOpen] = useState(false);
   const [helpCenterOpen, setHelpCenterOpen] = useState(false);
@@ -27,15 +31,24 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Portal screens render without the marketing chrome.
+  const isPortal = isPortalTab(currentTab);
+
+  // Mirror the tab into ?screen= so a refresh lands on the same screen.
+  useEffect(() => { syncSearch(currentTab); }, [currentTab]);
+
   return (
+    <PortalSessionProvider onSignedOut={() => handleSelectTab('home')}>
     <div className="min-h-screen flex flex-col bg-[#f8f9ff] text-[#0b1c30] relative selection:bg-[#4648d4]/20 selection:text-[#4648d4]">
-      {/* Top Navbar */}
-      <Navbar
-        currentTab={currentTab}
-        onSelectTab={handleSelectTab}
-        onOpenGetStarted={() => setGetStartedOpen(true)}
-        brandName="BlueprintIQ"
-      />
+      {/* Top Navbar — marketing only */}
+      {!isPortal && (
+        <Navbar
+          currentTab={currentTab}
+          onSelectTab={handleSelectTab}
+          onOpenGetStarted={() => setGetStartedOpen(true)}
+          brandName="BlueprintIQ"
+        />
+      )}
 
       {/* Main Content View Container */}
       <main className="flex-grow flex flex-col" id="main-content">
@@ -75,6 +88,12 @@ export default function App() {
           />
         )}
 
+        {currentTab === 'login' && <LoginScreen onSignedIn={() => handleSelectTab('portal-output')} />}
+
+        {currentTab !== 'login' && isPortal && (
+          <PortalRouter currentTab={currentTab} onSelectTab={handleSelectTab} />
+        )}
+
         {currentTab === 'about' && (
           <TeamScreen
             onOpenCareers={() => setCareersOpen(true)}
@@ -85,7 +104,7 @@ export default function App() {
       </main>
 
       {/* Screen Switcher Floating Bar — development only, excluded from production builds */}
-      {import.meta.env.DEV && (
+      {import.meta.env.DEV && !currentTab.startsWith('portal-') && (
       <aside
         aria-label="Screen Quick Switcher"
         className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-[#0f172a]/95 text-white backdrop-blur-md px-3 py-2 rounded-full shadow-2xl border border-[#334155] flex items-center space-x-1.5 text-xs font-medium"
@@ -143,11 +162,13 @@ export default function App() {
       </aside>
       )}
 
-      {/* Global Footer */}
-      <Footer
-        onSelectTab={handleSelectTab}
-        brandName="BlueprintIQ"
-      />
+      {/* Global Footer — marketing only */}
+      {!isPortal && (
+        <Footer
+          onSelectTab={handleSelectTab}
+          brandName="BlueprintIQ"
+        />
+      )}
 
       {/* Interactive Modals */}
       <GetStartedModal
@@ -177,5 +198,6 @@ export default function App() {
         onOpenContact={() => handleSelectTab('contact')}
       />
     </div>
+    </PortalSessionProvider>
   );
 }
