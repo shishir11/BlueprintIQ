@@ -16,8 +16,8 @@ export interface PatternCard {
 
 export const OUTPUT_HEADER = {
   chips: ['ENTERPRISE SYNTHESIS HUB', 'Acme Global Technologies Inc.', 'Fintech & Banking Tier'],
-  meta: ['Professional Tier', 'v3.4 Production Signed'],
-  title: 'Autonomous AI Strategy & Architecture Synthesis',
+  meta: ['Professional Tier', 'v3.4 Production Signed', 'Curated AI Strategy based on the customer and region specific'],
+  title: 'Autonomous AI Strategy',
   intro:
     'Deterministic technical evaluation, multi-tenant hybrid schema, distributed OCR-Kafka ETL '
     + 'pipelines, and cryptographic safety assurance for multi-region enclave operations '
