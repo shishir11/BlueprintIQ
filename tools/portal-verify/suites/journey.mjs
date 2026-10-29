@@ -131,7 +131,7 @@ export default async function journey({ page, base, report, width }) {
   await page.click(SEL.userMenuBtn);
 
   // 8. a cold portal URL
-  await page.goto(`${base}/?screen=portal-governance`);
+  await page.goto(`${base}/?screen=portal-output`);
   report.check('a portal URL opened without a session lands on the gateway',
     await page.eval(GATEWAY));
 

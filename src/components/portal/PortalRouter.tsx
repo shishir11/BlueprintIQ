@@ -5,7 +5,6 @@ import { usePortalSession } from './session/PortalSession';
 import { OnboardingScreen } from './screens/OnboardingScreen';
 import { InvoicingScreen } from './screens/InvoicingScreen';
 import { IngestionScreen } from './screens/IngestionScreen';
-import { GovernanceScreen } from './screens/GovernanceScreen';
 import { OutputScreen } from './screens/OutputScreen';
 
 /* Picks the portal screen for the current tab and enforces the session guard.
@@ -20,7 +19,6 @@ const SCREENS: Partial<Record<TabType, React.FC>> = {
   'portal-onboarding': OnboardingScreen,
   'portal-invoicing': InvoicingScreen,
   'portal-ingestion': IngestionScreen,
-  'portal-governance': GovernanceScreen,
   'portal-output': OutputScreen,
 };
 

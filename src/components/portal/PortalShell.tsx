@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   ChevronDown, Database, Gem, LayoutDashboard, LogOut, Menu,
-  ReceiptText, ShieldCheck, UserCog, type LucideIcon,
+  ReceiptText, UserCog, type LucideIcon,
 } from 'lucide-react';
 import type { TabType } from '../../types';
 import { usePortalSession } from './session/PortalSession';
@@ -19,7 +19,6 @@ export const PORTAL_NAV: NavItem[] = [
   { id: 'portal-onboarding', label: 'Organisation Access', icon: UserCog },
   { id: 'portal-invoicing', label: 'Billing & Invoicing', icon: ReceiptText },
   { id: 'portal-ingestion', label: 'Document Ingestion', icon: Database },
-  { id: 'portal-governance', label: 'Sign-off & Governance', icon: ShieldCheck },
   { id: 'portal-output', label: 'Synthesis Output', icon: LayoutDashboard },
 ];
 
