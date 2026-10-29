@@ -207,7 +207,7 @@ export const OnboardingScreen: React.FC = () => {
         <div className="min-w-0 space-y-6">
           <PortalCard className="p-5">
             <div className="flex items-center justify-between gap-3">
-              <h2 className="text-base font-semibold text-ink">Provisioning Velocity</h2>
+              <h2 className="text-base font-semibold text-ink">Onboarding Status</h2>
               <StatusPill tone="success">{PROVISIONING_VELOCITY.badge}</StatusPill>
             </div>
             <div className="mt-4">

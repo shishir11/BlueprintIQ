@@ -17,7 +17,7 @@ import {
 } from '../ui/primitives';
 import { Donut } from '../ui/charts';
 import {
-  ALERT_PREFERENCES, BILLING_REPRESENTATIVES, COST_BREAKDOWN, ENTITLEMENT, INVOICES,
+  ALERT_PREFERENCES, BILLING_REPRESENTATIVES, INVOICES,
   INVOICE_FILTERS, INVOICE_FOOTER, INVOICING_FOOTNOTES, INVOICING_HEADER, KPI_TILES,
   SETTLEMENT_CHANNELS, type Invoice,
 } from '../data/invoicing';
@@ -103,84 +103,7 @@ export const InvoicingScreen: React.FC = () => {
         ))}
       </div>
 
-      {/* Entitlement */}
-      <PortalCard className="mt-6 p-6">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div className="flex items-start gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-input bg-primary">
-              <Receipt className="h-5 w-5 text-white" aria-hidden="true" />
-            </span>
-            <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <h2 className="text-lg font-semibold text-ink">{ENTITLEMENT.tier}</h2>
-                <StatusPill tone="primary">{ENTITLEMENT.badge}</StatusPill>
-              </div>
-              <p className="mt-1 text-sm text-foreground-secondary">{ENTITLEMENT.contract}</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" disabled aria-disabled="true" title={INERT_TITLE} className={`${btnInertSecondary} px-4 py-2`}>{ENTITLEMENT.actions[0]}</button>
-            <button type="button" disabled aria-disabled="true" title={INERT_TITLE} className={`${btnInertPrimary} px-4 py-2`}>{ENTITLEMENT.actions[1]}</button>
-          </div>
-        </div>
 
-        <dl className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-          {ENTITLEMENT.columns.map((c) => (
-            <div key={c.label} className="rounded-input border border-border-subtle bg-primary-tint p-4">
-              <dt className="text-xs font-medium text-primary">{c.label}</dt>
-              <dd className="mt-2 text-sm font-semibold text-ink">{c.value}</dd>
-              <dd className="mt-1 text-xs text-foreground-muted">{c.detail}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className="mt-5 rounded-card bg-primary-tint p-4">
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <p className="text-sm font-semibold text-ink">{ENTITLEMENT.cycle.title}</p>
-              <p className="mt-1 text-xs text-foreground-secondary">{ENTITLEMENT.cycle.detail}</p>
-            </div>
-            <div className="min-w-[12rem]">
-              <p className="text-xs text-foreground-muted">{ENTITLEMENT.cycle.elapsedLabel}</p>
-              <p className="mt-1 text-xs font-medium text-ink">{ENTITLEMENT.cycle.elapsed}</p>
-              <div className="mt-2">
-                <ProgressBar value={ENTITLEMENT.cycle.percent} label="Contract cycle elapsed" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </PortalCard>
-
-      {/* Cost breakdown */}
-      <div className="mt-6 min-w-0">
-        <PortalCard className="min-w-0 p-6">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="min-w-0">
-              <h2 className="text-lg font-semibold text-ink">{COST_BREAKDOWN.title}</h2>
-              <p className="text-sm text-foreground-secondary">{COST_BREAKDOWN.subtitle}</p>
-            </div>
-            <span className="shrink-0 text-xs font-medium text-primary">{COST_BREAKDOWN.exportLabel}</span>
-          </div>
-          <div className="mt-6">
-            <Donut
-              title="Monthly cost allocated by business unit"
-              centreValue={COST_BREAKDOWN.centre}
-              centreLabel={COST_BREAKDOWN.centreLabel}
-              data={COST_BREAKDOWN.segments.map((s) => ({ label: s.label, value: s.value, step: s.step }))}
-            />
-          </div>
-          <ul className="mt-4 space-y-2 border-t border-border-subtle pt-4">
-            {COST_BREAKDOWN.segments.map((s) => (
-              <li key={s.label} className="flex items-center justify-between gap-2 text-xs">
-                <span className="min-w-0 truncate text-foreground-muted">{s.seats}</span>
-                <span className="shrink-0 whitespace-nowrap font-medium text-ink">
-                  {money(s.value)} ({s.percent})
-                </span>
-              </li>
-            ))}
-          </ul>
-        </PortalCard>
-      </div>
 
       {/* Settlement channels */}
       <div className="mt-6 min-w-0">

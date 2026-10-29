@@ -22,11 +22,11 @@ export const INVOICING_HEADER = {
 
 export const KPI_TILES = [
   {
-    label: 'Annual Contract Value (ACV)', value: '$48,000', suffix: '/ yr',
-    rows: [{ label: 'Billing Cadence:', value: 'Annual Pre-paid' }, { label: 'Term Valid To:', value: 'Oct 31, 2026' }],
+    label: 'Professional Subscription', value: '$20,000', suffix: '/ yr',
+    rows: [{ label: 'Billing Cadence:', value: 'Annual Pre-paid' }, { label: 'Term Valid To:', value: 'Oct 31, 2027' }],
   },
   {
-    label: 'Accrued Usage (MTD)', value: '$3,420.50', suffix: 'Est. Nov 1',
+    label: 'COST PER RUN', value: '$5,000', suffix: 'Est. Nov 1 - Remaining runs 3/5',
     rows: [{ label: 'Provisioned Seats:', value: '218 / 250' }, { label: 'Burst Compute Overage:', value: '$220.50' }],
   },
 ];

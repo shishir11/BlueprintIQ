@@ -18,11 +18,9 @@ export const ONBOARDING_HEADER = {
 export const WIZARD_STEPS: WizardStep[] = [
   { index: '01', title: 'Profile', state: 'Completed' },
   { index: '02', title: 'Key Contacts', state: 'Active' },
-  { index: '03', title: 'Access & SCIM', state: 'In Scope' },
+  { index: '03', title: 'Access', state: 'In Scope' },
   { index: '04', title: 'Billing', state: 'Upcoming' },
-  { index: '05', title: 'Compliance', state: 'Upcoming' },
-  { index: '06', title: 'Business Rules', state: 'Upcoming' },
-  { index: '07', title: 'Go-Live', state: 'Sign-Off' },
+  { index: '05', title: 'Finalized', state: 'Sign-Off' },
 ];
 
 export const ORG_METADATA = {
@@ -54,9 +52,7 @@ export const ORG_METADATA = {
 export const PROVISIONING_VELOCITY = {
   badge: 'ON SCHEDULE',
   percent: 42,
-  milestones: '3 of 7 Milestones Active',
-  next: 'Next: billing tier validation and workspace provisioning.',
-  remaining: 'Est. Time Remaining: 14 mins',
+  milestones: '3 of 5 Milestones Active',
 };
 
 export const ONBOARDING_ACTIONS = {
