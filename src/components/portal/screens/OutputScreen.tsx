@@ -13,7 +13,7 @@ import {
   btnInertSecondary,
 } from '../ui/primitives';
 import {
-  ATTESTATION, DATA_MODELS, EXECUTION_HORIZON, GUARDRAILS, OUTPUT_HEADER, OUTPUT_METRICS,
+  ATTESTATION, EXECUTION_HORIZON, GUARDRAILS, OUTPUT_HEADER, OUTPUT_METRICS,
   PATTERN_CARDS, RESIDENCY, REVIEWERS, TOPOLOGY, VALUE_PROPOSITION,
 } from '../data/output';
 
@@ -156,44 +156,7 @@ export const OutputScreen: React.FC = () => {
             </div>
           </PortalCard>
 
-          {/* Data models */}
-          <PortalCard className="p-6">
-            <SectionHeading
-              icon={Database}
-              title={DATA_MODELS.title}
-              subtitle={DATA_MODELS.subtitle}
-              action={<Chip muted>{DATA_MODELS.badge}</Chip>}
-            />
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {DATA_MODELS.columns.map((c) => (
-                <div key={c.name} className="rounded-card border border-border-subtle p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-primary">{c.kind}</p>
-                  <p className="mt-2 text-sm font-semibold text-ink">{c.name}</p>
-                  <ul className="mt-3 space-y-1">
-                    {c.rows.map((r) => (
-                      <li key={r} className="text-xs text-foreground-secondary">{r}</li>
-                    ))}
-                  </ul>
-                  <p className="mt-3 flex items-center justify-between gap-2 border-t border-border-subtle pt-2 text-xs">
-                    <span className="min-w-0 break-words text-foreground-muted">{c.footer.label}</span>
-                    <span className="shrink-0 whitespace-nowrap font-medium text-ink">{c.footer.value}</span>
-                  </p>
-                </div>
-              ))}
-            </div>
 
-            <div className="mt-5 overflow-hidden rounded-card bg-ink-dark">
-              <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5">
-                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground-on-dark">
-                  {DATA_MODELS.snapshot.label}
-                </p>
-                <p className="text-xs text-foreground-on-dark">{DATA_MODELS.snapshot.validated}</p>
-              </div>
-              <pre className="overflow-x-auto px-4 pb-4 font-mono text-xs leading-relaxed text-foreground-on-dark">
-                {DATA_MODELS.snapshot.sql}
-              </pre>
-            </div>
-          </PortalCard>
         </div>
 
         {/* Right rail */}

@@ -142,41 +142,6 @@ export const TOPOLOGY = {
   ],
 };
 
-export const DATA_MODELS = {
-  title: 'Data Models & Schema Synthesis',
-  subtitle: 'Multi-modal store partitions, relational integrity, and semantic vector indexing',
-  badge: 'Postgres 16 + Milvus 2.4',
-  columns: [
-    {
-      kind: 'VECTOR ENGINE', name: 'Milvus Enterprise',
-      rows: ['Dim: 1536 (Cosine Index)', 'Index: HNSW (M=16, ef=200)', 'Namespaces: 42', 'Quantization: SQ8 scalar'],
-      footer: { label: 'Recall Rate:', value: '99.41%' },
-    },
-    {
-      kind: 'RELATIONAL CORE', name: 'PostgreSQL 16 Multi-Tenant',
-      rows: ['Partition: Hash (org_id)', 'Storage: Citus Sharding', 'Encryption: AES-256 rest', 'ACID: Strict Serializable'],
-      footer: { label: 'Write Throughput:', value: '24k ops/sec' },
-    },
-    {
-      kind: 'GRAPH AST RAG', name: 'Neo4j Enterprise Engine',
-      rows: ['Nodes: Entities, Req, Rules', 'Edges: Governs, Implements', 'Graph Depth: 3 hops context', 'SNR: Link prediction'],
-      footer: { label: 'Traverse Latency:', value: '18ms' },
-    },
-  ],
-  snapshot: {
-    label: 'DDL SYNTHESIS SNAPSHOT (ACME_AI_CORE.SQL)',
-    validated: 'VALIDATED SHA-256: 4B1C...99A2',
-    sql:
-      'CREATE TABLE enterprise_knowledge_vectors (\n'
-      + '  chunk_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n'
-      + '  tenant_id VARCHAR(64) NOT NULL,\n'
-      + '  document_urn VARCHAR(255) NOT NULL,\n'
-      + '  embedding_vector VECTOR(1536) NOT NULL,\n'
-      + '  governance_level INT GENERATED ALWAYS AS (...) STORED,\n'
-      + '  created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\n'
-      + ') PARTITION BY HASH (tenant_id);',
-  },
-};
 
 export const GUARDRAILS = {
   title: 'Proposed AI Guardrails',
