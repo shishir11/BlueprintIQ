@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {
-  ArrowUpDown, Building2, CreditCard, Download, Eye, Receipt, Search, SlidersHorizontal, UserPlus,
+  ArrowUpDown, CreditCard, Download, Eye, Receipt, Search, SlidersHorizontal, UserPlus,
 } from 'lucide-react';
 import { btnSecondary } from '../../ui';
 import {
@@ -19,7 +19,7 @@ import { Donut } from '../ui/charts';
 import {
   ALERT_PREFERENCES, BILLING_REPRESENTATIVES, COST_BREAKDOWN, ENTITLEMENT, INVOICES,
   INVOICE_FILTERS, INVOICE_FOOTER, INVOICING_FOOTNOTES, INVOICING_HEADER, KPI_TILES,
-  LEGAL_ENTITY, SETTLEMENT_CHANNELS, USAGE_FOOTNOTES, USAGE_METERS, type Invoice,
+  SETTLEMENT_CHANNELS, type Invoice,
 } from '../data/invoicing';
 
 /* Billing & invoicing dashboard — built from `billing invoicing.png`.
@@ -83,7 +83,7 @@ export const InvoicingScreen: React.FC = () => {
       </div>
 
       {/* KPI tiles */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {KPI_TILES.map((t) => (
           <PortalCard key={t.label} className="p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground-muted">{t.label}</p>
@@ -151,42 +151,8 @@ export const InvoicingScreen: React.FC = () => {
         </div>
       </PortalCard>
 
-      {/* Usage + cost */}
-      <div className="mt-6 grid min-w-0 gap-6 lg:grid-cols-3">
-        <PortalCard className="min-w-0 p-6 lg:col-span-2">
-          <SectionHeading
-            title="Live Entitlements &amp; Consumption"
-            subtitle="Real-time usage metrics tracked against monthly contracted platform quotas."
-            action={<StatusPill tone="primary">Live Sync: 4m ago</StatusPill>}
-          />
-          <div className="mt-6 space-y-6">
-            {USAGE_METERS.map((m) => (
-              <div key={m.label}>
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-sm font-medium text-ink">{m.label}</p>
-                  <p className="text-sm font-semibold text-ink">{m.note}</p>
-                </div>
-                <div className="mt-2">
-                  <ProgressBar
-                    value={m.percent}
-                    label={`${m.label} consumption`}
-                    tone={m.percent >= 85 ? 'warning' : 'primary'}
-                  />
-                </div>
-                <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-xs text-foreground-secondary">{m.detail}</p>
-                  <p className="text-xs font-medium text-primary">{m.link}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-wrap gap-4 border-t border-border-subtle pt-4">
-            {USAGE_FOOTNOTES.map((f) => (
-              <p key={f} className="text-xs text-foreground-secondary">{f}</p>
-            ))}
-          </div>
-        </PortalCard>
-
+      {/* Cost breakdown */}
+      <div className="mt-6 min-w-0">
         <PortalCard className="min-w-0 p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="min-w-0">
@@ -216,8 +182,8 @@ export const InvoicingScreen: React.FC = () => {
         </PortalCard>
       </div>
 
-      {/* Settlement + legal entity */}
-      <div className="mt-6 grid min-w-0 gap-6 lg:grid-cols-2">
+      {/* Settlement channels */}
+      <div className="mt-6 min-w-0">
         <PortalCard className="p-6">
           <SectionHeading
             icon={CreditCard}
@@ -249,33 +215,6 @@ export const InvoicingScreen: React.FC = () => {
           <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs">
             <span className="font-medium text-primary">{SETTLEMENT_CHANNELS.footerLinks[0]}</span>
             <span className="text-foreground-muted">{SETTLEMENT_CHANNELS.footerLinks[1]}</span>
-          </div>
-        </PortalCard>
-
-        <PortalCard className="p-6">
-          <SectionHeading
-            icon={Building2}
-            title={LEGAL_ENTITY.title}
-            subtitle={LEGAL_ENTITY.subtitle}
-            action={<span className="text-xs font-medium text-primary">{LEGAL_ENTITY.editLabel}</span>}
-          />
-          <div className="mt-6 rounded-card bg-primary-tint p-4">
-            <p className="text-sm font-semibold text-ink">{LEGAL_ENTITY.name}</p>
-            {LEGAL_ENTITY.lines.map((l) => (
-              <p key={l} className="text-sm text-foreground-secondary">{l}</p>
-            ))}
-            <dl className="mt-4 grid gap-3 sm:grid-cols-2 border-t border-border-subtle pt-3">
-              {LEGAL_ENTITY.fields.map((f) => (
-                <div key={f.label}>
-                  <dt className="text-xs text-foreground-muted">{f.label}</dt>
-                  <dd className="mt-1 text-xs font-medium text-ink">{f.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs">
-            <span className="font-medium text-primary">{LEGAL_ENTITY.footerLinks[0]}</span>
-            <span className="text-foreground-muted">{LEGAL_ENTITY.footerLinks[1]}</span>
           </div>
         </PortalCard>
       </div>
