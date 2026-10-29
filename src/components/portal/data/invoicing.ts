@@ -12,17 +12,6 @@ export interface Invoice {
   status: 'Under Review (AP)' | 'Paid & Settled';
 }
 
-export interface UsageMeter {
-  label: string;
-  detail: string;
-  used: number;
-  total: number;
-  unit: string;
-  percent: number;
-  note: string;
-  link: string;
-}
-
 export const INVOICING_HEADER = {
   title: 'Enterprise Billing & Invoicing',
   intro:
@@ -39,14 +28,6 @@ export const KPI_TILES = [
   {
     label: 'Accrued Usage (MTD)', value: '$3,420.50', suffix: 'Est. Nov 1',
     rows: [{ label: 'Provisioned Seats:', value: '218 / 250' }, { label: 'Burst Compute Overage:', value: '$220.50' }],
-  },
-  {
-    label: 'Active Settlement Channel', value: 'Direct Net 30', suffix: '',
-    rows: [{ label: 'ERP Integration:', value: 'Coupa / SAP e-Inv' }, { label: 'Master PO Ref:', value: '#PO-2025-8841-ENT' }],
-  },
-  {
-    label: 'Tax & Compliance Status', value: 'Resale / Exempt', suffix: '',
-    rows: [{ label: 'EIN on File:', value: 'US-12-3456789' }, { label: 'Form W-9 Validity:', value: 'Valid through 2027' }],
   },
 ];
 
@@ -70,32 +51,6 @@ export const ENTITLEMENT = {
     percent: 50,
   },
 };
-
-export const USAGE_METERS: UsageMeter[] = [
-  {
-    label: 'Provisioned Enterprise Users / Seats',
-    detail: '32 seats remaining before overage tier pricing ($16/seat/mo) kicks in',
-    used: 218, total: 250, unit: 'Seats', percent: 87,
-    note: '218 / 250 Seats (87%)', link: 'Safe Limit',
-  },
-  {
-    label: 'High-IOPS Distributed Hot SSD Storage',
-    detail: 'US-East: 21.4 TB • EU-Central: 12.1 TB • AP-Southeast: 4.7 TB',
-    used: 38.2, total: 50, unit: 'TB', percent: 76,
-    note: '38.2 TB / 50.0 TB (76%)', link: '11.8 TB Headroom',
-  },
-  {
-    label: 'Egress Bandwidth & API Ingestion Queries',
-    detail: 'Current throughput: 142 req/sec peak',
-    used: 4.8, total: 10, unit: 'M Calls', percent: 48,
-    note: '4.8M / 10.0M Calls (48%)', link: 'Nominal Traffic',
-  },
-];
-
-export const USAGE_FOOTNOTES = [
-  'Dedicated Cloudflare L7 DDoS Guard: Active',
-  'Automated audit logging: Enabled',
-];
 
 export const COST_BREAKDOWN = {
   title: 'Cost Breakdown',
@@ -127,19 +82,6 @@ export const SETTLEMENT_CHANNELS = {
     },
   ],
   footerLinks: ['Add Secondary Payment Method'],
-};
-
-export const LEGAL_ENTITY = {
-  title: 'Legal Billing Entity on File',
-  subtitle: 'Entity registered for tax remittance, invoicing jurisdiction, and statutory filings.',
-  editLabel: 'Edit Details',
-  name: 'Acme Global Enterprises Holdings, Inc.',
-  lines: ['450 Technology Parkway, Suite 1200', 'Reston, VA 20190, United States of America'],
-  fields: [
-    { label: 'Tax Registration / EIN:', value: 'US-12-3456789' },
-    { label: 'VAT / VIES Status:', value: 'EU-Non-Resident Exempt' },
-  ],
-  footerLinks: ['Manage VAT / Tax Identification Numbers', 'Validated by Avalara'],
 };
 
 export const INVOICE_FILTERS = ['All Invoices (12)', 'Paid (11)', 'Pending Payment', 'Tax & W-9'];
