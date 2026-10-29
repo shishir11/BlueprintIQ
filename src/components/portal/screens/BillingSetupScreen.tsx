@@ -33,7 +33,7 @@ export const BillingSetupScreen: React.FC = () => {
 
   return (
     <div className="mx-auto w-full max-w-7xl">
-      <h1 className="text-2xl font-bold tracking-tight text-ink">Enterprise Workspace Provisioning</h1>
+      <h1 className="text-2xl font-bold tracking-tight text-ink">Onboarding Provisioning</h1>
 
       {/* Stepper */}
       <PortalCard className="mt-5 p-5">

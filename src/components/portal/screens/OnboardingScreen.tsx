@@ -65,7 +65,7 @@ export const OnboardingScreen: React.FC = () => {
         <StatusPill tone="success">{ONBOARDING_HEADER.systemStatus}</StatusPill>
       </div>
 
-      <h1 className="mt-5 text-2xl font-bold tracking-tight text-ink">Enterprise Workspace Provisioning</h1>
+      <h1 className="mt-5 text-2xl font-bold tracking-tight text-ink">Onboarding Provisioning</h1>
 
       {/* Stepper */}
       <PortalCard className="mt-5 p-5">

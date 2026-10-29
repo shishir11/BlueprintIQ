@@ -31,7 +31,7 @@ export interface ReadinessItem {
 }
 
 export const ONBOARDING_HEADER = {
-  breadcrumb: ['Tenants', 'Acme Global Ent.', 'Enterprise Workspace Provisioning'],
+  breadcrumb: ['Tenants', 'Acme Global Ent.', 'Onboarding Provisioning'],
   region: 'eu-west-2',
   stepChip: 'Enterprise Setup: Step 3 of 7',
   tenantChip: 'Acme Global Ent.',
