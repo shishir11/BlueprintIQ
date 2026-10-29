@@ -8,7 +8,6 @@ export const PORTAL_TABS: TabType[] = [
   'portal-onboarding',
   'portal-invoicing',
   'portal-ingestion',
-  'portal-governance',
   'portal-output',
 ];
 

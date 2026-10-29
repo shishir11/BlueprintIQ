@@ -61,23 +61,6 @@ const CONTROLS = {
       probe: "document.querySelectorAll('table tbody tr').length",
     },
   ],
-  'portal-governance': [
-    {
-      label: 'signatory filter narrows the list',
-      act: 'SET #gov-filter Chen',
-      probe: `document.querySelector('${SEL.shell}')?.innerText.length`,
-    },
-    {
-      // The audit-log copy button, matched on its exact label: the header's "Send
-      // Reminders" also matches a loose /remind/i and is one of the decorative
-      // buttons the census suite reports, so it would read as a broken control.
-      label: 'audit-log copy acknowledges',
-      act: `(() => { const b = [...document.querySelectorAll('${SEL.shell} button')]
-        .find((x) => x.textContent.trim() === 'Copy'); if (b) b.click(); })()`,
-      probe: `[...document.querySelectorAll('${SEL.shell} button')]
-        .some((x) => x.textContent.trim() === 'Copied')`,
-    },
-  ],
   'portal-output': [
     {
       label: 'first toggle flips',

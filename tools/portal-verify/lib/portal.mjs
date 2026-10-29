@@ -6,7 +6,6 @@ export const SCREENS = [
   { tab: 'portal-onboarding', label: 'Organisation Access' },
   { tab: 'portal-invoicing', label: 'Billing & Invoicing' },
   { tab: 'portal-ingestion', label: 'Document Ingestion' },
-  { tab: 'portal-governance', label: 'Sign-off & Governance' },
   { tab: 'portal-output', label: 'Synthesis Output' },
 ];
 
