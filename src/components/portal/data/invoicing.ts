@@ -111,7 +111,7 @@ export const COST_BREAKDOWN = {
 };
 
 export const SETTLEMENT_CHANNELS = {
-  title: 'Settlement & Invoicing Channels',
+  title: 'Payment Mode',
   subtitle: 'Active instruments configured for monthly recurring settlements and annual commitments.',
   badge: 'Automated EDI',
   instruments: [
