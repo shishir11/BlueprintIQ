@@ -3,7 +3,6 @@ import type { TabType } from '../../types';
 import { PortalShell } from './PortalShell';
 import { usePortalSession } from './session/PortalSession';
 import { OnboardingScreen } from './screens/OnboardingScreen';
-import { BillingSetupScreen } from './screens/BillingSetupScreen';
 import { InvoicingScreen } from './screens/InvoicingScreen';
 import { IngestionScreen } from './screens/IngestionScreen';
 import { GovernanceScreen } from './screens/GovernanceScreen';
@@ -19,7 +18,6 @@ interface PortalRouterProps {
 
 const SCREENS: Partial<Record<TabType, React.FC>> = {
   'portal-onboarding': OnboardingScreen,
-  'portal-billing': BillingSetupScreen,
   'portal-invoicing': InvoicingScreen,
   'portal-ingestion': IngestionScreen,
   'portal-governance': GovernanceScreen,

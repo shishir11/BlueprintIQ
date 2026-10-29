@@ -6,7 +6,6 @@ import type { TabType } from '../../types';
 
 export const PORTAL_TABS: TabType[] = [
   'portal-onboarding',
-  'portal-billing',
   'portal-invoicing',
   'portal-ingestion',
   'portal-governance',

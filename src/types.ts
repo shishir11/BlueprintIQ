@@ -1,6 +1,6 @@
 export type TabType =
   | 'home' | 'features' | 'team' | 'contact' | 'pricing' | 'about' | 'login'
-  | 'portal-onboarding' | 'portal-billing' | 'portal-invoicing'
+  | 'portal-onboarding' | 'portal-invoicing'
   | 'portal-ingestion' | 'portal-governance' | 'portal-output';
 
 export interface TeamMember {
