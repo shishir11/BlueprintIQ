@@ -179,7 +179,7 @@ export const DATA_MODELS = {
 };
 
 export const GUARDRAILS = {
-  title: 'Active AI Guardrails',
+  title: 'Proposed AI Guardrails',
   rows: [
     { name: 'AI Governance Board', detail: '', badge: 'Armored', on: true },
     { name: 'AI Risk Assessments', detail: 'AST Fact-Check (Threshold 98.7%)', badge: 'STRICT', on: true },
