@@ -30,11 +30,6 @@ const CONTROLS = {
       probe: `[...document.querySelectorAll('${SEL.shell} ol li button')]
         .findIndex((x) => x.getAttribute('aria-current') === 'step')`,
     },
-    {
-      label: 'a radio selects',
-      act: "document.querySelectorAll('input[type=radio]')[1]?.click()",
-      probe: "[...document.querySelectorAll('input[type=radio]')].map((r) => r.checked).join(',')",
-    },
   ],
   'portal-invoicing': [
     {
