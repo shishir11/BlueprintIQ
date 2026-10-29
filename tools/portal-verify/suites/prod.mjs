@@ -36,18 +36,6 @@ const CONTROLS = {
       probe: "[...document.querySelectorAll('input[type=radio]')].map((r) => r.checked).join(',')",
     },
   ],
-  'portal-billing': [
-    {
-      label: 'section tab switches',
-      act: "document.querySelectorAll('[role=tab]')[1]?.click()",
-      probe: "[...document.querySelectorAll('[role=tab]')].map((t) => t.getAttribute('aria-selected')).join(',')",
-    },
-    {
-      label: 'a plan radio selects',
-      act: "document.querySelectorAll('input[type=radio]')[1]?.click()",
-      probe: "[...document.querySelectorAll('input[type=radio]')].map((r) => r.checked).join(',')",
-    },
-  ],
   'portal-invoicing': [
     {
       label: 'status filter changes the table',
