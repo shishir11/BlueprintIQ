@@ -178,34 +178,6 @@ export const DATA_MODELS = {
   },
 };
 
-export const PIPELINE_STEPS = {
-  title: 'ETL & Document Ingestion Pipeline',
-  subtitle: 'Kafka streaming, layout-aware OCR chunking, and semantic cache',
-  badge: '1.85k Tokens/sec',
-  steps: [
-    {
-      index: '01', name: 'Document Intake & Layout Parsing',
-      detail: 'Distributed LayoutLM v3 + Tesseract OCR for PDF/DOCX financial audits',
-      stat: 'Topic: raw.specs.inbound', value: '99.7% Conf',
-    },
-    {
-      index: '02', name: 'Context-Aware Chunking & Tokenization',
-      detail: '512 token windows with 64 token overlap, syntax header retention',
-      stat: 'Avg: 480 tokens', value: 'Deduplication 94%',
-    },
-    {
-      index: '03', name: 'Semantic Cache & Embedding Dispatch',
-      detail: 'Redis Enterprise exact-hash + cosine approximate cache (>0.94 similarity hit)',
-      stat: 'Cache Hit: 41.3%', value: '$0.00 Cost On Hit',
-    },
-  ],
-  throughput: {
-    title: 'ETL Throughput vs Backpressure (Last 24 Hours)',
-    detail: 'Sustained zero dropped payloads across peak market open volume.',
-    points: [12, 18, 15, 22, 28, 24, 35, 42, 38, 30, 26, 33, 48, 44, 36, 29],
-  },
-};
-
 export const GUARDRAILS = {
   title: 'Active AI Guardrails',
   rows: [

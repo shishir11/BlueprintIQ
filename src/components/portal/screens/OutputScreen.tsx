@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  ArrowRight, Boxes, Check, Database, Download, FileText, Network, Play, ShieldCheck, Workflow,
+  ArrowRight, Boxes, Check, Database, Download, FileText, Network, Play, ShieldCheck,
 } from 'lucide-react';
 import {
   Chip,
@@ -12,10 +12,9 @@ import {
   btnInertPrimary,
   btnInertSecondary,
 } from '../ui/primitives';
-import { Sparkline } from '../ui/charts';
 import {
   ATTESTATION, DATA_MODELS, EXECUTION_HORIZON, GUARDRAILS, OUTPUT_HEADER, OUTPUT_METRICS,
-  PATTERN_CARDS, PIPELINE_STEPS, RESIDENCY, REVIEWERS, TOPOLOGY, VALUE_PROPOSITION,
+  PATTERN_CARDS, RESIDENCY, REVIEWERS, TOPOLOGY, VALUE_PROPOSITION,
 } from '../data/output';
 
 /* Synthesis output — built from `Output.png`. */
@@ -193,41 +192,6 @@ export const OutputScreen: React.FC = () => {
               <pre className="overflow-x-auto px-4 pb-4 font-mono text-xs leading-relaxed text-foreground-on-dark">
                 {DATA_MODELS.snapshot.sql}
               </pre>
-            </div>
-          </PortalCard>
-
-          {/* Pipeline */}
-          <PortalCard className="p-6">
-            <SectionHeading
-              icon={Workflow}
-              title={PIPELINE_STEPS.title}
-              subtitle={PIPELINE_STEPS.subtitle}
-              action={<StatusPill tone="primary">{PIPELINE_STEPS.badge}</StatusPill>}
-            />
-            <ol className="mt-6 space-y-3">
-              {PIPELINE_STEPS.steps.map((s) => (
-                <li key={s.index} className="flex flex-wrap items-center justify-between gap-3 rounded-card bg-primary-tint p-4">
-                  <div className="flex min-w-0 items-start gap-3">
-                    <span className="text-xs font-semibold text-primary">{s.index}</span>
-                    <div className="min-w-0">
-                      <p className="text-sm font-semibold text-ink">{s.name}</p>
-                      <p className="mt-1 text-xs text-foreground-secondary">{s.detail}</p>
-                    </div>
-                  </div>
-                  <div className="flex shrink-0 flex-wrap gap-2">
-                    <Chip muted>{s.stat}</Chip>
-                    <Chip>{s.value}</Chip>
-                  </div>
-                </li>
-              ))}
-            </ol>
-
-            <div className="mt-5 rounded-card border border-border-subtle p-4">
-              <p className="text-sm font-semibold text-ink">{PIPELINE_STEPS.throughput.title}</p>
-              <p className="mt-1 text-xs text-foreground-secondary">{PIPELINE_STEPS.throughput.detail}</p>
-              <div className="mt-3">
-                <Sparkline points={PIPELINE_STEPS.throughput.points} label={PIPELINE_STEPS.throughput.title} />
-              </div>
             </div>
           </PortalCard>
         </div>
