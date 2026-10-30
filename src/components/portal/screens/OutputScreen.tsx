@@ -214,15 +214,6 @@ export const OutputScreen: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <div className="mt-4 rounded-card bg-primary-tint p-3">
-              <p className="text-xs font-semibold text-ink">{GUARDRAILS.ledger.title}</p>
-              {GUARDRAILS.ledger.rows.map((r) => (
-                <p key={r.label} className="mt-1 flex items-center justify-between gap-2 text-xs">
-                  <span className="min-w-0 truncate text-foreground-muted">{r.label}</span>
-                  <span className="shrink-0 whitespace-nowrap font-medium text-ink">{r.value}</span>
-                </p>
-              ))}
-            </div>
           </PortalCard>
 
           <PortalCard className="p-5">

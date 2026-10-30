@@ -169,13 +169,6 @@ export const GUARDRAILS = {
     { name: 'Monitoring & Auditing', detail: 'Auto-fallback < 250ms threshold', badge: 'ARMED', on: true },
      { name: 'Continuous Improvement Program', detail: 'Auto-fallback < 250ms threshold', badge: 'ARMED', on: true },
   ],
-  ledger: {
-    title: 'Audit Ledger Trail (SHA-256)',
-    rows: [
-      { label: 'Last Block:', value: '0x9b80...fa52' },
-      { label: 'Total Sanitized Chunks:', value: '5,432' },
-    ],
-  },
 };
 
 export const RESIDENCY = {
