@@ -23,14 +23,14 @@ export interface PortalOrg {
 export const PORTAL_ORG: PortalOrg = {
   name: 'Acme Global Technologies Inc.',
   tenantId: 'strata-org-842',
-  region: 'us-east-va-1',
+  region: 'eu-west-2',
   plan: 'Enterprise Scale (Custom)',
 };
 
 export const ELEANOR: PortalUser = {
   id: 'usr-eleanor-vance',
   name: 'Eleanor Vance',
-  role: 'Super Admin',
+  role: 'Admin',
   title: 'VP Enterprise Infrastructure',
   email: 'e.vance@acmeglobal.com',
   initials: 'EV',

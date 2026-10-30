@@ -19,9 +19,8 @@ export const OUTPUT_HEADER = {
   meta: ['Professional Tier', 'v3.4 Production Signed', 'Curated AI Strategy based on the customer and region specific'],
   title: 'Autonomous AI Strategy',
   intro:
-    'Deterministic technical evaluation, multi-tenant hybrid schema, distributed OCR-Kafka ETL '
-    + 'pipelines, and cryptographic safety assurance for multi-region enclave operations '
-    + '(US-East & US-Central).',
+    'An Autonomous AI Strategy for the current assessment aims to augment and progressively automate manual trading activities by leveraging AI agents across research, portfolio construction, trade execution, risk management, compliance monitoring  '
+    + ' and maintain regulatory compliance while keeping portfolio managers in supervisory control.',
   sourcesLabel: 'Ingested Specifications (RAG Synced):',
   sources: ['BRD.pdf', 'PRD.pdf', 'SDD.pdf', 'Database Design', 'Infra Design'],
   actions: ['Export Comprehensive Static Site', 'Export Executive Blueprint (PDF)', 'Send final assessment via email'],
@@ -66,7 +65,7 @@ export const OUTPUT_METRICS: MetricTileData[] = [
 
 export const VALUE_PROPOSITION = {
   title: 'AI Strategy & Executive Value Proposition',
-  subtitle: 'We bridge the gap between AI experimentation and enterprise value—turning technology investments into measurable growth, expanded margins, and market dominance.',
+  subtitle: 'The recommended AI strategy enables asset managers to accelerate alpha generation, improve investment decisions, strengthen risk and compliance controls, and reduce costs through intelligent automation. This drives scalable growth, faster market response, and sustainable competitive advantage while keeping portfolio managers in strategic control.',
   badge: '90-Day Time-to-Value',
 };
 
@@ -144,7 +143,7 @@ export const TOPOLOGY = {
 
 export const DELIVERABLES = {
   title: 'Assessment Deliverables',
-  subtitle: 'Generated for every assessment and included in the static site and ZIP export.',
+  subtitle: 'Generated required document for the current assessment and included in the static site and ZIP export.',
   chip: '9 documents',
   items: [
     { name: 'AI Strategy', detail: 'Whether AI is the right answer, and the opportunities ordered by cost.', icon: 'Sparkles' },
@@ -162,12 +161,12 @@ export const DELIVERABLES = {
 export const GUARDRAILS = {
   title: 'Proposed AI Guardrails',
   rows: [
-    { name: 'AI Governance Board', detail: '', badge: 'Armored', on: true },
-    { name: 'AI Risk Assessments', detail: 'AST Fact-Check (Threshold 98.7%)', badge: 'STRICT', on: true },
-    { name: 'Training & Awareness', detail: 'Heuristic + Semantic Classifier', badge: 'BLOCK', on: true },
-    { name: 'AI Development Lifecycle', detail: 'AST Fact-Check (Threshold 98.7%)', badge: '98.7%', on: true },
-    { name: 'Monitoring & Auditing', detail: 'Auto-fallback < 250ms threshold', badge: 'ARMED', on: true },
-     { name: 'Continuous Improvement Program', detail: 'Auto-fallback < 250ms threshold', badge: 'ARMED', on: true },
+    { name: 'AI Governance Board', detail: '', badge: 'STRICT', on: true },
+    { name: 'AI Risk Assessments', detail: '', badge: 'STRICT', on: true },
+    { name: 'Training & Awareness', detail: '', badge: 'BLOCK', on: true },
+    { name: 'AI Development Lifecycle', detail: '', badge: '96.2%', on: true },
+    { name: 'Monitoring & Auditing', detail: '', badge: 'STRICT', on: true },
+     { name: 'Continuous Improvement Program', detail: '', badge: 'STRICT', on: true },
   ],
 };
 
@@ -176,12 +175,11 @@ export const RESIDENCY = {
   subtitle: 'Zero Boundary Spillover',
   badge: 'Dual Enclave',
   regions: [
-    { name: 'US-East Region (Virginia)', meta: 'KMS ID: arn:aws:kms:us-east-1:acme', tag: 'PRIMARY' },
-    { name: 'EU-Central (Frankfurt)', meta: 'BIPR SCC Residency Enclave', tag: 'ISOLATED' },
+    { name: 'EU-West Region (London)', meta: '', tag: 'PRIMARY' },
+    { name: 'EU-Central (Frankfurt)', meta: '', tag: 'ISOLATED' },
   ],
-  mapCaption: 'Encrypted In-Transit & At-Rest (FIPS 140-3)',
+  mapCaption: 'Encrypted In-Transit & At-Rest',
   fields: [
-    { label: 'SCIM Directory Linkage:', value: 'Okta Enterprise IDP' },
     { label: 'Key Rotation Cycle:', value: 'Every 30 Days (Automated)' },
     { label: 'Audit Signature:', value: 'sha256:acme-f4102' },
   ],
