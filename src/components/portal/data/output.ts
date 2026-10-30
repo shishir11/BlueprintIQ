@@ -142,6 +142,22 @@ export const TOPOLOGY = {
   ],
 };
 
+export const DELIVERABLES = {
+  title: 'Assessment Deliverables',
+  subtitle: 'Generated for every assessment and included in the static site and ZIP export.',
+  chip: '9 documents',
+  items: [
+    { name: 'AI Strategy', detail: 'Whether AI is the right answer, and the opportunities ordered by cost.', icon: 'Sparkles' },
+    { name: 'Cost Feasibility', detail: 'Cost ranges and payback from the declared usage figures.', icon: 'PiggyBank' },
+    { name: 'Technical Feasibility', detail: 'The verdict, the stated cause tested, and the evidence behind it.', icon: 'Gauge' },
+    { name: 'Guardrails', detail: 'Proposed controls for the use case and the obligations they map to.', icon: 'ShieldCheck' },
+    { name: 'Architectural Decision Records', detail: 'Each design decision, the options weighed, and why.', icon: 'GitBranch' },
+    { name: 'Data Governance', detail: 'Ownership, classification and lifecycle of the data involved.', icon: 'Scale' },
+    { name: 'Data Architecture', detail: 'Data sources, readiness and the target data flow.', icon: 'Database' },
+    { name: 'Design Documents', detail: 'Current and target architecture, drawn from the uploaded material.', icon: 'FileText' },
+    { name: 'AI Transformation Roadmap', detail: 'The phased path from today to the target state.', icon: 'Map' },
+  ],
+};
 
 export const GUARDRAILS = {
   title: 'Proposed AI Guardrails',

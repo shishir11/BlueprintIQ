@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
-  ArrowRight, Boxes, Check, Database, Download, FileText, Network, Play, ShieldCheck,
+  ArrowRight, Boxes, Check, Database, Download, FileText, Gauge, GitBranch, Map, Network,
+  PiggyBank, Play, Scale, ShieldCheck, Sparkles,
 } from 'lucide-react';
 import {
   Chip,
@@ -13,11 +14,15 @@ import {
   btnInertSecondary,
 } from '../ui/primitives';
 import {
-  ATTESTATION, EXECUTION_HORIZON, GUARDRAILS, OUTPUT_HEADER, OUTPUT_METRICS,
+  ATTESTATION, DELIVERABLES, EXECUTION_HORIZON, GUARDRAILS, OUTPUT_HEADER, OUTPUT_METRICS,
   PATTERN_CARDS, RESIDENCY, REVIEWERS, TOPOLOGY, VALUE_PROPOSITION,
 } from '../data/output';
 
 /* Synthesis output — built from `Output.png`. */
+
+const DELIVERABLE_ICONS = {
+  Sparkles, PiggyBank, Gauge, ShieldCheck, GitBranch, Scale, Database, FileText, Map,
+} as const;
 
 export const OutputScreen: React.FC = () => {
   const [guardrails, setGuardrails] = useState(GUARDRAILS.rows.map((r) => ({ ...r })));
@@ -156,7 +161,35 @@ export const OutputScreen: React.FC = () => {
             </div>
           </PortalCard>
 
-
+          {/* Deliverables */}
+          <PortalCard className="p-6">
+            <SectionHeading
+              icon={FileText}
+              title={DELIVERABLES.title}
+              subtitle={DELIVERABLES.subtitle}
+              action={<Chip>{DELIVERABLES.chip}</Chip>}
+            />
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {DELIVERABLES.items.map((d, i) => {
+                const Icon = DELIVERABLE_ICONS[d.icon as keyof typeof DELIVERABLE_ICONS];
+                return (
+                  <div
+                    key={d.name}
+                    className="rounded-card border border-border-subtle bg-surface p-5 shadow-card transition duration-150 hover:border-primary hover:shadow-card-hover"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground-muted">
+                      {String(i + 1).padStart(2, '0')}
+                    </p>
+                    <span className="mt-3 flex h-10 w-10 items-center justify-center rounded-input bg-primary-tint text-primary">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <p className="mt-3 font-semibold text-ink">{d.name}</p>
+                    <p className="mt-1 text-sm text-foreground-muted">{d.detail}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </PortalCard>
         </div>
 
         {/* Right rail */}
