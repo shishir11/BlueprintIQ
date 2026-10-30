@@ -31,9 +31,9 @@ export const OUTPUT_METRICS: MetricTileData[] = [
   {
     label: 'Technical Feasibility', value: '96.2%',
     rows: [
-      { label: 'Latency', value: 'p95: 142ms' },
-      { label: 'Target', value: '<180ms' },
-      { label: 'Status', value: 'Ready' },
+      { label: 'Technology Stack & Architecture', value: 'High' },
+      { label: 'Integration & Interoperability', value: 'high' },
+      { label: 'Team Skill & Execution', value: 'Medium' },
     ],
   },
   {
@@ -66,7 +66,7 @@ export const OUTPUT_METRICS: MetricTileData[] = [
 
 export const VALUE_PROPOSITION = {
   title: 'AI Strategy & Executive Value Proposition',
-  subtitle: 'Our AI vision is to transform Company Name into an AI-augmented enterprise that leverages data and intelligent automation to accelerate innovation, enhance customer experience, and streamline operations by Target Year.',
+  subtitle: 'We bridge the gap between AI experimentation and enterprise value—turning technology investments into measurable growth, expanded margins, and market dominance.',
   badge: '90-Day Time-to-Value',
 };
 
@@ -109,18 +109,18 @@ export const EXECUTION_HORIZON = {
   phases: [
     {
       window: 'DAYS 01 - 30', title: 'Phase 1: Retrieval Core',
-      body: 'Dual-region Milvus vector clusters, Kafka real-time ingestion, and basic PII redaction layer.',
-      status: 'Completed in Sandbox', tone: 'success' as const,
+      body: 'Needs to build the underlying core technical infrastructure to support multi-agent orchestration frameworks, secure RAG pipelines, model governance, and a robust data integration layer—required to drive our agentic AI transformation.',
+      status: 'Pending', tone: 'primary' as const,
     },
     {
       window: 'DAYS 31 - 60', title: 'Phase 2: Agentic Validation',
-      body: 'LangChain/LangGraph multi-step reasoning, AST graph synthesis, and hallucination circuit-breakers.',
-      status: 'In Progress (Sprint 4)', tone: 'primary' as const,
+      body: 'Systematically validate multi-agent orchestration based on LangChain/LangGraph multi-step reasoning paths, and compliance guardrails before deployment.',
+      status: 'Scheduled', tone: 'success' as const,
     },
     {
       window: 'DAYS 61 - 90', title: 'Phase 3: Production GA',
-      body: 'Dual-region active-active failover, automated permission propagation, and continuous audit logging.',
-      status: 'Scheduled Q4', tone: 'neutral' as const,
+      body: 'Promote the multi-agent AI platform to production GA, embedding zero-trust guardrails, enterprise SLAs, and full-stack observability.',
+      status: 'Scheduled', tone: 'success' as const,
     },
   ],
 };
@@ -133,7 +133,7 @@ export const TOPOLOGY = {
     { name: 'API Gateway & mTLS', detail: 'Envoy Proxy / gRPC', chip: '0.8ms p99' },
     { name: 'Guardrail Gate 1', detail: 'PII/PCI & Jailbreak', chip: 'Zero-Leak Check' },
     { name: 'Ingest & Kafka', detail: 'Distributed Chunking', chip: '1.8k tok/sec' },
-    { name: 'Hybrid DB Core', detail: 'Milvus + PGSQL + Neo4j', chip: '1536-dim Vector' },
+    { name: 'Hybrid DB Core', detail: 'PosgresSql + PgVector', chip: '1536-dim Vector' },
   ],
   footers: [
     { name: 'Zero-Trust Isolation', detail: 'Tenant namespaces keys hashed with customer KMS seeds.' },
